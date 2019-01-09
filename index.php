@@ -17,39 +17,23 @@ get_header();
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
-			<h1>TESTING</h1>
-		<?php
-		if ( have_posts() ) :
 
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-				<?php
-			endif;
+			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+			    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
 
-			endwhile;
+					</div> 
 
-			the_posts_navigation();
+			    <?php endwhile; ?>
+			  <?php  else : ?>
 
-		else :
+			        <article class="no-posts">
 
-			get_template_part( 'template-parts/content', 'none' );
+			            <h1><?php _e('No posts were found.'); ?></h1>
 
-		endif;
-		?>
+			        </article>
+			    <?php endif; ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->

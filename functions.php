@@ -122,9 +122,11 @@ add_action( 'widgets_init', 'ab_capital_widgets_init' );
 function ab_capital_scripts() {
 	wp_enqueue_style( 'ab-capital-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'bootstrap-style', get_template_directory_uri() . '/css/bootstrap.min.css' );
+	wp_enqueue_style( 'daryl-cs', get_template_directory_uri() . '/css/daryl-news.css' );
 
 
 	wp_enqueue_script( 'ab-capital-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	wp_enqueue_script( 'daryl-js', get_template_directory_uri() . '/js/daryl.js', '', '', true );
 	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/js/bootstrap.min.js', '', '', true );
 	wp_enqueue_script( 'ab-capital-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
@@ -167,3 +169,8 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+/**
+ * Like formatter
+ */
+require get_template_directory() . '/inc/wp_ulike_format.php';
