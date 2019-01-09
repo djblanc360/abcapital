@@ -28,18 +28,16 @@ get_header();
 					<div class="col-xs-4 col-sm-6">
 
 
-						<h6 class="post-title"><a href="<?php the_permalink(); ?>" class="post-title-link"><?php the_title(); ?></a></h6>
-                <p>
-                    <?php $postLikes = wp_ulike_get_post_likes(get_the_ID());?>
-                     <i class="far fa-calendar-alt"></i> <?php echo get_the_date('M d, Y'); ?> | <i class="far fa-comments"></i> <?php echo get_comments_number(); ?> | <i class="far fa-heart"></i> <?php if($postLikes) { echo $postLikes ; } else { echo '<span>0</span>'; } ?>
-                </p>
+						<h4 class="post-title"><a href="<?php the_permalink(); ?>" class="post-title-link"><?php the_title(); ?></a></h4>
+						<p class="blogPostMeta">
+								<?php $postLikes = wp_ulike_get_post_likes(get_the_ID());?>
+								<?php the_author(); ?>  | <?php foreach((get_the_category()) as $category) { echo $category->cat_name . ' '; } ?> | <?php echo get_comments_number(); ?> Comments | <?php echo get_the_date('M d, Y'); ?>  | <?php echo get_the_date('M d, Y'); ?> <?php if($postLikes) { echo $postLikes ; } else { echo '<span>0</span>'; } ?> Likes |
+						</p>
 
         <div class="post-text"> <?php the_excerpt(); ?> </div>
     		<a href="<?php the_permalink(); ?>" class="button read-more-button">Read More</a>
 		    <div class="clearfix"></div>
-            <p class="blogPostMeta">
-                <?php the_author(); ?>  | <?php foreach((get_the_category()) as $category) { echo $category->cat_name . ' '; } ?>
-            </p>
+
 
 
 
