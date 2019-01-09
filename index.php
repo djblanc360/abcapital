@@ -19,10 +19,15 @@ get_header();
 		<main id="main" class="site-main">
 
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-
+				<div class="row">
 			    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
 						<?php echo the_post_thumbnail(); ?>
+				  </div>
+
+					<div class="col-xs-4 col-sm-6">
+
+
 						<h6 class="post-title"><a href="<?php the_permalink(); ?>" class="post-title-link"><?php the_title(); ?></a></h6>
                 <p>
                     <?php $postLikes = wp_ulike_get_post_likes(get_the_ID());?>
@@ -35,10 +40,12 @@ get_header();
             <p class="blogPostMeta">
                 <?php the_author(); ?>  | <?php foreach((get_the_category()) as $category) { echo $category->cat_name . ' '; } ?>
             </p>
-        <div class="clearfix"></div>
-										
+
+
 
 					</div>
+					<div class="clearfix"></div>
+				</div><!--end row-->
 
 			    <?php endwhile; ?>
 			  <?php  else : ?>
