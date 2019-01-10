@@ -33,7 +33,7 @@ get_header();
 		        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 		            <div class="panel-body">
 		            	<ul>
-										<li><?php get_category_by_slug( test1 ); ?></li>
+										<li><a href="<?php get_category_by_slug( test1 ); ?>">Test 1</a></li>
 									</ul>
 		            </div>
 		        </div>
