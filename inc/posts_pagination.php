@@ -1,6 +1,6 @@
 <?php
-if ( ! function_exists( 'my_pagination' ) ) :
-    function my_pagination() {
+if ( ! function_exists( 'numbered_pagination' ) ) :
+    function numbered_pagination() {
         global $wp_query;
 
         $big = 999999999; // need an unlikely integer
