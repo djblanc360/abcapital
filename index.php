@@ -22,7 +22,7 @@ get_header();
 	<div class="col-sm-3">
 
 	</div><!-- END CATEGORY -->
-	<div class="col-sm-7">
+	<div class="col-sm-8">
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 			<div class="row">
 				<div class=" col-sm-3">
