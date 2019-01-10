@@ -20,53 +20,7 @@ get_header();
 
 <div class="row">
 	<div class="col-sm-3">
-		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-		    <div class="panel panel-default">
-		        <div class="panel-heading" role="tab" id="headingOne">
-		             <h4 class="panel-title">
-		        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-		          Category Group 1
-		        </a>
-		      </h4>
 
-		        </div>
-		        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-		            <div class="panel-body">
-
-								</div>
-		        </div>
-		    </div>
-		    <div class="panel panel-default">
-		        <div class="panel-heading" role="tab" id="headingTwo">
-		             <h4 class="panel-title">
-		        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-		          Category Group 2
-		        </a>
-		      </h4>
-
-		        </div>
-		        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-		            <div class="panel-body">
-
-								</div>
-		        </div>
-		    </div>
-		    <div class="panel panel-default">
-		        <div class="panel-heading" role="tab" id="headingThree">
-		             <h4 class="panel-title">
-		        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-		          Category Group 3
-		        </a>
-		      </h4>
-
-		        </div>
-		        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-		            <div class="panel-body">
-
-		            </div>
-		        </div>
-		    </div>
-		</div>
 	</div><!-- END CATEGORY -->
 	<div class="col-sm-8">
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -102,7 +56,11 @@ get_header();
 				<?php endif; ?>
 	</div><!--END NEWS -->
 </div><!-- END MAIN ROW -->
-
+<div class="news-navigation">
+	<span class="nav-previous pagination-buttons"><?php previous_posts_link( 'Previous <i class="fas fa-angle-double-left"></i>' ); ?></span>
+	<span class="nav-next pagination-buttons"><?php next_posts_link( 'Next <i class="fas fa-angle-double-right"></i>' ); ?></span>
+</div>
+<?php wpbeginner_numeric_posts_nav(); ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
