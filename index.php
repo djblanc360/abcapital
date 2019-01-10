@@ -18,46 +18,47 @@ get_header();
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
-			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-				<div class="row">
-			    <div class="col-xs-6 col-sm-2">
+<div class="row">
+	<div class="col-sm-3">
+		
+	</div><!-- END CATEGORY -->
+	<div class="col-sm-7">
+		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+			<div class="row">
+				<div class="col-xs-6 col-sm-2">
 
-						<?php echo the_post_thumbnail(); ?>
-				  </div>
+					<?php echo the_post_thumbnail(); ?>
+				</div>
 
-					<div class="col-xs-12 col-sm-6">
-
-
-						<h4 class="post-title"><a href="<?php the_permalink(); ?>" class="post-title-link"><?php the_title(); ?></a></h4>
-						<p class="blogPostMeta">
-								<?php $postLikes = wp_ulike_get_post_likes(get_the_ID());?>
-								<?php the_author(); ?>  | <?php foreach((get_the_category()) as $category) { echo $category->cat_name . ' '; } ?> | <?php echo get_comments_number(); ?> Comments | <?php echo get_the_date('Y.M.d'); ?>  |  <?php if($postLikes) { echo $postLikes ; } else { echo '<span>0</span>'; } ?> Likes |
-						</p>
-
-        <div class="post-text"> <?php the_excerpt(); ?> </div>
-    		<a href="<?php the_permalink(); ?>" class="button read-more-button">Read More</a>
-		    <div class="clearfix"></div>
+				<div class="col-xs-12 col-sm-6">
 
 
+					<h4 class="post-title"><a href="<?php the_permalink(); ?>" class="post-title-link"><?php the_title(); ?></a></h4>
+					<p class="blogPostMeta">
+							<?php $postLikes = wp_ulike_get_post_likes(get_the_ID());?>
+							<?php the_author(); ?>  | <?php foreach((get_the_category()) as $category) { echo $category->cat_name . ' '; } ?> | <?php echo get_comments_number(); ?> Comments | <?php echo get_the_date('Y.M.d'); ?>  |  <?php if($postLikes) { echo $postLikes ; } else { echo '<span>0</span>'; } ?> Likes | Share This Post
+					</p>
 
+			<div class="post-text"> <?php the_excerpt(); ?> </div>
+			<a href="<?php the_permalink(); ?>" class="button read-more-button">Read More</a>
+				</div>
+				<div class="clearfix"></div>
+			</div><!--end row-->
 
-					</div>
-					<div class="clearfix"></div>
-				</div><!--end row-->
+				<?php endwhile; ?>
+			<?php  else : ?>
 
-			    <?php endwhile; ?>
-			  <?php  else : ?>
+						<article class="no-posts">
 
-			        <article class="no-posts">
+								<h1><?php _e('No posts were found.'); ?></h1>
 
-			            <h1><?php _e('No posts were found.'); ?></h1>
-
-			        </article>
-			    <?php endif; ?>
+						</article>
+				<?php endif; ?>
+	</div><!--END NEWS -->
+</div><!-- END MAIN ROW -->
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
 <?php
-get_sidebar();
 get_footer();
