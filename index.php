@@ -20,6 +20,33 @@ get_header();
 
 <div class="row news-category-column">
 	<div class="col-sm-2">
+<?php
+$categories = get_categories( array ('orderby' => 'name', 'order' => 'asc' ) );
+
+foreach ($categories as $category){
+
+   echo "Category is: $category->name <br/>";
+
+   $catPosts = new WP_Query( array ( 'category_name' => $category->slug, 'orderby' => 'title' ) );
+
+   if ( $catPosts->have_posts() ){
+
+       while ( $catPost->have_posts() ){
+          $catPost->the_post();
+          echo "<a href='the_permalink()'>the_title()</a>";
+       }
+
+       echo "<p><a href='/category/$category->slug'>More in this category</a></p>";
+
+   }//end if
+
+
+
+} //end foreach
+
+wp_reset_postdata();
+?>
+
 		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 		    <div class="panel panel-default">
 		        <div class="panel-heading" role="tab" id="headingOne">
