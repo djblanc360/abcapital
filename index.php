@@ -21,6 +21,16 @@ get_header();
 <div class="row news-category-column">
 	<div class="col-sm-2">
 		
+		<form action="<?php echo home_url()?>">
+		<?php
+		  $categories = get_categories();
+		  foreach ($categories as $category) {
+		  echo '<input type="checkbox" name="cat_select[]" value="'.$category->cat_ID.'"> '.$category->category_nicename.'<br />';
+		  }
+		?>
+		<button type="submit">Filter</button>
+		</form>
+
 		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 		    <div class="panel panel-default">
 		        <div class="panel-heading" role="tab" id="headingOne">
