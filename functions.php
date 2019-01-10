@@ -174,3 +174,9 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  * Like formatter
  */
 require get_template_directory() . '/inc/wp_ulike_format.php';
+
+/**
+ * Like formatter
+ * https://codex.wordpress.org/Function_Reference/paginate_links#Source_File
+ */
+require get_template_directory() . '/inc/posts_pagination.php';

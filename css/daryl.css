@@ -1,0 +1,32 @@
+.read-more-button {
+  border: 2px solid;
+  padding: .5rem;
+  display: inline-block;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  float:right;
+}
+
+.panel-title > a:before {
+    float: right !important;
+    font-family: FontAwesome;
+    content:"\f068";
+    padding-right: 5px;
+}
+.panel-title > a.collapsed:before {
+    float: right !important;
+    content:"\f067";
+}
+.panel-title > a:hover,
+.panel-title > a:active,
+.panel-title > a:focus  {
+    text-decoration:none;
+}
+
+.news-space {
+  margin: 4%;
+}
+
+.row.news-category-column {
+  marign-left:15%;
+}
