@@ -23,7 +23,17 @@ get_header();
 
 	</div><!-- END CATEGORY -->
 	<div class="col-sm-8">
-		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+		<?php
+			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+			query_posts(array(
+			    'post_type'      => 'post', 
+			    'paged'          => $paged,
+			    'posts_per_page' => 10
+			));
+
+			if (have_posts()) : while (have_posts()) : the_post();
+		?>
 			<div class="row">
 				<div class=" col-sm-3">
 
@@ -46,6 +56,9 @@ get_header();
 			</div><!--end row-->
 
 				<?php endwhile; ?>
+
+				<?php numbered_pagination(); ?>
+
 			<?php  else : ?>
 
 						<article class="no-posts">
@@ -56,11 +69,8 @@ get_header();
 				<?php endif; ?>
 	</div><!--END NEWS -->
 </div><!-- END MAIN ROW -->
-<div class="news-navigation">
-	<span class="nav-previous pagination-buttons"><?php previous_posts_link( 'Previous <i class="fas fa-angle-double-left"></i>' ); ?></span>
-	<span class="nav-next pagination-buttons"><?php next_posts_link( 'Next <i class="fas fa-angle-double-right"></i>' ); ?></span>
-</div>
-<?php if (function_exists('wpbeginner_numeric_posts_nav')) { wpbeginner_numeric_posts_nav(); } ?>
+
+
 		</main><!-- #main -->
 	</div><!-- #primary -->
 

@@ -22,3 +22,7 @@
 .panel-title > a:focus  {
     text-decoration:none;
 }
+
+.news-space {
+  margin: 4%;
+}
