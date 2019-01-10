@@ -17,28 +17,32 @@ get_header();
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
-<div id="container">
-<div class="row">
-	<div class="col-sm-3">
+
+<div class="row news-category-column">
+	<div class="col-sm-2">
 		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 		    <div class="panel panel-default">
 		        <div class="panel-heading" role="tab" id="headingOne">
 		             <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-		          Collapsible Group Item #1
+		          Category Section #1
 		        </a>
 		      </h4>
 
 		        </div>
 		        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-		            <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.le VHS.</div>
+		            <div class="panel-body">
+		            	<ul>
+										<li><?php get_category_by_slug( test1 ); ?></li>
+									</ul>
+		            </div>
 		        </div>
 		    </div>
 		    <div class="panel panel-default">
 		        <div class="panel-heading" role="tab" id="headingTwo">
 		             <h4 class="panel-title">
 		        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-		          Collapsible Group Item #2
+		          Category Section #2
 		        </a>
 		      </h4>
 
@@ -51,7 +55,7 @@ get_header();
 		        <div class="panel-heading" role="tab" id="headingThree">
 		             <h4 class="panel-title">
 		        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-		          Collapsible Group Item #3
+		          Category Sectionm #3
 		        </a>
 		      </h4>
 
@@ -109,7 +113,7 @@ get_header();
 				<?php endif; ?>
 	</div><!--END NEWS -->
 </div><!-- END MAIN ROW -->
-</div><!-- END CONTAINER -->
+
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
