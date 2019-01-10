@@ -27,7 +27,7 @@ get_header();
 			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
 			query_posts(array(
-			    'post_type'      => 'post', 
+			    'post_type'      => 'post',
 			    'paged'          => $paged,
 			    'posts_per_page' => 10
 			));
@@ -57,7 +57,18 @@ get_header();
 
 				<?php endwhile; ?>
 
-				<?php numbered_pagination(); ?>
+				<?php
+				global $wp_query;
+
+				$big = 999999999; // need an unlikely integer
+
+				echo paginate_links( array(
+					'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+					'format' => '?paged=%#%',
+					'current' => max( 1, get_query_var('paged') ),
+					'total' => $wp_query->max_num_pages
+				) );
+				?>
 
 			<?php  else : ?>
 
