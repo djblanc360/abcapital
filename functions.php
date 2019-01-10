@@ -123,7 +123,7 @@ function ab_capital_scripts() {
 	wp_enqueue_style( 'ab-capital-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'bootstrap-style', get_template_directory_uri() . '/css/bootstrap.min.css' );
 	wp_enqueue_style( 'daryl-cs', get_template_directory_uri() . '/css/daryl.css' );
-
+	wp_enqueue_style( 'fontawesome-style', 'https://use.fontawesome.com/releases/v5.4.1/css/all.css' );
 
 	wp_enqueue_script( 'ab-capital-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 	wp_enqueue_script( 'daryl-js', get_template_directory_uri() . '/js/daryl.js', '', '', true );
