@@ -20,76 +20,16 @@ get_header();
 
 <div class="row news-category-column">
 	<div class="col-sm-2">
+		<form action="<?php echo home_url()?>">
 		<?php
-		$custom_terms = get_terms('custom_taxonomy');
-
-		foreach($custom_terms as $custom_term) {
-		    wp_reset_query();
-		    $args = array('post_type' => 'custom_post_type',
-		        'tax_query' => array(
-		            array(
-		                'taxonomy' => 'custom_taxonomy',
-		                'field' => 'slug',
-		                'terms' => $custom_term->slug,
-		            ),
-		        ),
-		     );
-
-		     $loop = new WP_Query($args);
-		     if($loop->have_posts()) {
-		        echo '<h2>'.$custom_term->name.'</h2>';
-
-		        while($loop->have_posts()) : $loop->the_post();
-		            echo '<a href="'.get_permalink().'">'.get_the_title().'</a><br>';
-		        endwhile;
-		     }
-		}
+		  $categories = get_categories();
+		  foreach ($categories as $category) {
+		  echo '<input type="checkbox" name="cat_select[]" value="'.$category->cat_ID.'"> '.$category->category_nicename.'<br />';
+		  }
 		?>
-		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-		    <div class="panel panel-default">
-		        <div class="panel-heading" role="tab" id="headingOne">
-		             <h4 class="panel-title">
-		        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-		          Category Section #1
-		        </a>
-		      </h4>
+		<button type="submit">Filter</button>
+		</form>
 
-		        </div>
-		        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-		            <div class="panel-body">
-		            	<ul>
-										<li><a href="<?php get_category_by_slug( test1 ); ?>">Test 1</a></li>
-									</ul>
-		            </div>
-		        </div>
-		    </div>
-		    <div class="panel panel-default">
-		        <div class="panel-heading" role="tab" id="headingTwo">
-		             <h4 class="panel-title">
-		        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-		          Category Section #2
-		        </a>
-		      </h4>
-
-		        </div>
-		        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-		            <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.</div>
-		        </div>
-		    </div>
-		    <div class="panel panel-default">
-		        <div class="panel-heading" role="tab" id="headingThree">
-		             <h4 class="panel-title">
-		        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-		          Category Sectionm #3
-		        </a>
-		      </h4>
-
-		        </div>
-		        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-		            <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. </div>
-		        </div>
-		    </div>
-		</div>
 	</div><!-- END CATEGORY -->
 	<div class="col-sm-8">
 		<?php
