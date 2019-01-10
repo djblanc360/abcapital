@@ -20,7 +20,7 @@ get_header();
 
 <div class="row news-category-column">
 	<div class="col-sm-2">
-		
+<?php wp_dropdown_categories( $args ); ?> 		
 		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 		    <div class="panel panel-default">
 		        <div class="panel-heading" role="tab" id="headingOne">
