@@ -17,7 +17,7 @@ get_header();
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
-
+<div id="container">
 <div class="row">
 	<div class="col-sm-3">
 		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -109,7 +109,7 @@ get_header();
 				<?php endif; ?>
 	</div><!--END NEWS -->
 </div><!-- END MAIN ROW -->
-
+</div><!-- END CONTAINER -->
 		</main><!-- #main -->
 	</div><!-- #primary -->
 

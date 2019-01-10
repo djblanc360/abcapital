@@ -10,12 +10,12 @@
 .panel-title > a:before {
     float: right !important;
     font-family: FontAwesome;
-    content:"-";
+    content:"\f068";
     padding-right: 5px;
 }
 .panel-title > a.collapsed:before {
     float: right !important;
-    content:"+";
+    content:"\f067";
 }
 .panel-title > a:hover,
 .panel-title > a:active,
@@ -25,4 +25,8 @@
 
 .news-space {
   margin: 4%;
+}
+
+#container {
+  marign-left:15%;
 }
