@@ -30,7 +30,7 @@ get_header();
 					<?php echo the_post_thumbnail(); ?>
 				</div>
 
-				<div class=" col-sm-7">
+				<div class=" col-sm-8">
 
 
 					<h4 class="post-title"><a href="<?php the_permalink(); ?>" class="post-title-link"><?php the_title(); ?></a></h4>
