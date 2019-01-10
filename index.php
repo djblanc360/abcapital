@@ -62,7 +62,7 @@ get_header();
 		        </div>
 		        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
 		            <div class="panel-body">
-		            	
+
 		            </div>
 		        </div>
 		    </div>
