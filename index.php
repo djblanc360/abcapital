@@ -29,7 +29,7 @@ get_header();
 			query_posts(array(
 			    'post_type'      => 'post',
 			    'paged'          => $paged,
-			    'posts_per_page' => 10
+			    'posts_per_page' => 5
 			));
 
 			if (have_posts()) : while (have_posts()) : the_post();
@@ -57,18 +57,7 @@ get_header();
 
 				<?php endwhile; ?>
 
-				<?php
-				global $wp_query;
-
-				$big = 999999999; // need an unlikely integer
-
-				echo paginate_links( array(
-					'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-					'format' => '?paged=%#%',
-					'current' => max( 1, get_query_var('paged') ),
-					'total' => $wp_query->max_num_pages
-				) );
-				?>
+				<?php my_pagination(); ?>
 
 			<?php  else : ?>
 
@@ -80,7 +69,6 @@ get_header();
 				<?php endif; ?>
 	</div><!--END NEWS -->
 </div><!-- END MAIN ROW -->
-
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
