@@ -60,7 +60,7 @@ get_header();
 	<span class="nav-previous pagination-buttons"><?php previous_posts_link( 'Previous <i class="fas fa-angle-double-left"></i>' ); ?></span>
 	<span class="nav-next pagination-buttons"><?php next_posts_link( 'Next <i class="fas fa-angle-double-right"></i>' ); ?></span>
 </div>
-<?php wpbeginner_numeric_posts_nav(); ?>
+<?php if (function_exists('wpbeginner_numeric_posts_nav')) { wpbeginner_numeric_posts_nav(); } ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
