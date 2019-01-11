@@ -17,25 +17,25 @@ get_header();
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
+			<?php
+				$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
+				query_posts(array(
+				    'post_type'      => 'post',
+				    'paged'          => $paged,
+				    'posts_per_page' => 5
+				));
+
+				if (have_posts()) : while (have_posts()) : the_post();
+			?>
 <div class="row news-category-column">
 	<div class="col-sm-2">
 
-<?php echo do_shortcode('[searchandfilter fields="category" types="checkbox" show_count="1" operators="OR" category_name="uncategorized"]'); ?>
+<?php echo do_shortcode('[searchandfilter fields="category" types="checkbox" show_count="1" operators="OR" category_name=""]'); ?>
 
 	</div><!-- END CATEGORY -->
 	<div class="col-sm-8">
-		<?php
-			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
-			query_posts(array(
-			    'post_type'      => 'post',
-			    'paged'          => $paged,
-			    'posts_per_page' => 5
-			));
-
-			if (have_posts()) : while (have_posts()) : the_post();
-		?>
 			<div class="row">
 				<div class=" col-sm-3">
 
@@ -68,10 +68,10 @@ get_header();
 								<h1><?php _e('No posts were found.'); ?></h1>
 
 						</article>
-				<?php endif; ?>
+
 	</div><!--END NEWS -->
 </div><!-- END MAIN ROW -->
-
+<?php endif; ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
