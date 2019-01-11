@@ -20,15 +20,8 @@ get_header();
 
 <div class="row news-category-column">
 	<div class="col-sm-2">
-		<form action="<?php echo home_url()?>">
-		<?php
-		  $categories = get_categories();
-		  foreach ($categories as $category) {
-		  echo '<input type="checkbox" name="cat_select[]" value="'.$category->cat_ID.'"> '.$category->category_nicename.'<br />';
-		  }
-		?>
-		<button type="submit">Filter</button>
-		</form>
+
+<?php echo do_shortcode('[searchandfilter fields="category,post_tag" types="select,select" show_count="1,1" operators=""OR,OR]'); ?>
 
 	</div><!-- END CATEGORY -->
 	<div class="col-sm-8">
