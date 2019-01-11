@@ -21,7 +21,7 @@ get_header();
 <div class="row news-category-column">
 	<div class="col-sm-2">
 
-<?php echo do_shortcode('[searchandfilter fields="category,post_tag" types="select,select" show_count="1,1" operators=""OR,OR]'); ?>
+<?php echo do_shortcode('[searchandfilter fields="category,post_tag" types="checkbox,checkbox" show_count="1,1" operators=""OR,OR]'); ?>
 
 	</div><!-- END CATEGORY -->
 	<div class="col-sm-8">
