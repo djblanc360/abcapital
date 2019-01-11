@@ -20,7 +20,7 @@ get_header();
 
 <div class="row news-category-column">
 	<div class="col-sm-2">
-<?php isset($_GET['category_name' => 'test1'] ?>
+<?php isset($_GET['category_name' => 'test1']) ?>
 
 	</div><!-- END CATEGORY -->
 	<div class="col-sm-8">
