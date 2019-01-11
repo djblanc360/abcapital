@@ -20,8 +20,7 @@ get_header();
 
 <div class="row news-category-column">
 	<div class="col-sm-2">
-
-<?php echo do_shortcode('[searchandfilter fields="category" types="checkbox" show_count="1" operators="OR" category_name=""]'); ?>
+<?php isset($_GET['category_name' => 'test1'] ?>
 
 	</div><!-- END CATEGORY -->
 	<div class="col-sm-8">
