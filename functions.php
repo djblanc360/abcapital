@@ -123,7 +123,7 @@ function ab_capital_scripts() {
 	wp_enqueue_style( 'ab-capital-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'bootstrap-style', get_template_directory_uri() . '/css/bootstrap.min.css' );
 	wp_enqueue_style( 'daryl-cs', get_template_directory_uri() . '/css/daryl.css' );
-
+	wp_enqueue_style( 'fontawesome-style', 'https://use.fontawesome.com/releases/v5.4.1/css/all.css' );
 
 	wp_enqueue_script( 'ab-capital-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 	wp_enqueue_script( 'daryl-js', get_template_directory_uri() . '/js/daryl.js', '', '', true );
@@ -180,3 +180,10 @@ require get_template_directory() . '/inc/wp_ulike_format.php';
  * https://codex.wordpress.org/Function_Reference/paginate_links#Source_File
  */
 require get_template_directory() . '/inc/posts_pagination.php';
+
+function x_filter_by_category( $query ) {
+if ( $query->is_home() && $query->is_main_query() && isset($_GET['cat_select']) ) {
+$query->set( 'cat', implode( ',', $_GET['cat_select'] ) );
+}
+}
+add_action('pre_get_posts', 'x_filter_by_category');
