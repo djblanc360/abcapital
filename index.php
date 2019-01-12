@@ -20,7 +20,11 @@ get_header();
 
 <div class="row news-category-column">
 	<div class="col-sm-2">
-<?php isset($_GET['cat']) ?>
+<?php
+	foreach((get_category_by_slug(test1)) as $category) {
+    echo $category->cat_name . ' ';
+}
+ ?>
 
 	</div><!-- END CATEGORY -->
 	<div class="col-sm-8">
