@@ -1,5 +1,4 @@
 <?php
-/* Pagination for posts */
 if ( ! function_exists( 'numbered_pagination' ) ) :
     function numbered_pagination() {
         global $wp_query;
@@ -14,7 +13,4 @@ if ( ! function_exists( 'numbered_pagination' ) ) :
         ) );
     }
 endif;
-
-
-/*Pagination for Closed Investments */
 ?>

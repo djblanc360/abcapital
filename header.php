@@ -27,7 +27,7 @@
 	<header id="masthead" class="site-header">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 			<div class="container">
-			  <a class="navbar-brand" href="#">
+			  <a class="navbar-brand" href="<?php echo site_url(); ?>">
 			    <img src="logo.png" width="30" height="30" alt="AB Capital Logo">
 			  </a>
 			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,3 +53,15 @@
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">
+
+		<?php if( is_front_page() ) { ?>
+
+		<?php } else { ?>
+
+			<section id="pageHead" style="background-image: url(<?php the_post_thumbnail_url(); ?>);">
+				<div class="container">
+					<h1><?php the_title(); ?></h1>
+				</div>
+			</section>
+
+		<?php } ?>
