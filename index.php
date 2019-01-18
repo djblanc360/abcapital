@@ -20,7 +20,7 @@ get_header();
 
 <div class="row news-category-column">
 	<div class="col-sm-2">
-		
+
 		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 		    <div class="panel panel-default">
 		        <div class="panel-heading" role="tab" id="headingOne">
@@ -68,6 +68,12 @@ get_header();
 		</div>
 	</div><!-- END CATEGORY -->
 	<div class="col-sm-8">
+			<form action="" method="POST">
+				<select name="post-sort" form="post-sort-form">
+				  <option value="volvo">Newest</option>
+				  <option value="saab">Oldest</option>
+				</select>
+			</form>
 		<?php
 			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
