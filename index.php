@@ -70,19 +70,21 @@ get_header();
 	<div class="col-sm-8">
 			<form action="" method="POST" id="post-sort-form">
 				<select name="post-sort" form="post-sort-form" id="post-sort">
-				  <option value="volvo">Newest</option>
-				  <option value="saab">Oldest</option>
+				  <option name="newest" value="newest">Newest</option>
+				  <option name="oldest" value="oldest">Oldest</option>
 				</select>
 			</form>
-		<?php
-			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
-			query_posts(array(
-			    'post_type'      => 'post',
-			    'paged'          => $paged,
-			    'posts_per_page' => 5
-			));
+		<?php	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
 
+			<?php $args = array(
+			'paged' => $paged,
+			'post_type'      => 'post',
+			'paged'          => $paged,
+			'posts_per_page' => 5
+			); ?>
+	<?php
+			<?php query_posts($args); ?>
 			if (have_posts()) : while (have_posts()) : the_post();
 		?>
 			<div class="row">
