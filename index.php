@@ -68,7 +68,7 @@ get_header();
 		</div>
 	</div><!-- END CATEGORY -->
 	<div class="col-sm-8">
-			<form action="" method="POST">
+			<form action="" method="POST" id="post-sort-form">
 				<select name="post-sort" form="post-sort-form">
 				  <option value="volvo">Newest</option>
 				  <option value="saab">Oldest</option>
