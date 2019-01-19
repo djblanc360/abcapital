@@ -74,7 +74,7 @@ get_header();
 		  $order = "&order=DESC";
 
 			if ($_POST['select'] == 'newest') { $order = "&order=DESC"; }
-		  if ($_POST['select'] == 'oldest') { $order = "&order=ASC&post_type=post&posts_per_page=5&paged=$paged"; }
+		  if ($_POST['select'] == 'oldest') { $order = "&order=ASC"; }
 		  if ($_POST['select'] == 'mcommented') { $order = "&order=DESC&orderby=comment_count";  }
 		  if ($_POST['select'] == 'lcommented') { $order = "&order=ASC&orderby=comment_count";  }
 		?>
