@@ -69,7 +69,7 @@ get_header();
 	</div><!-- END CATEGORY -->
 	<div class="col-sm-8">
 			<form action="" method="POST" id="post-sort-form">
-				<select name="post-sort" form="post-sort-form" id="post-sort">
+				<select name="post-sort" form="post-sort-form" id="post-sort" onchange="this.form.submit()">
 				  <option name="newest" value="newest">Newest</option>
 				  <option name="oldest" value="oldest">Oldest</option>
 				</select>
@@ -77,31 +77,33 @@ get_header();
 
 		<?php	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
 		<?php
-		if ($_POST['post-sort'] == 'newest') {
-			$args = array(
-			'paged' => $paged,
-			'post_type'  => 'post',
-			'posts_per_page' => 5,
-			'orderby' => 'date',
-			'order' => 'ASC',
-			);
-		}
-		else if ($_POST['post-sort'] == 'oldest') {
-			$args = array(
-			'paged' => $paged,
-			'post_type'  => 'post',
-			'posts_per_page' => 5,
-			'orderby' => 'date',
-			'order' => 'DESC',
-			);
-		}
-		else {
-			$args = array(
-			'paged' => $paged,
-			'post_type'  => 'post',
-			'posts_per_page' => 1
-			);
-		}
+				$args = '';
+
+				switch( $_POST['post-sort'] ) {
+				    case '2':
+				        $args = ''; // your query
+				        break;
+				    case 'oldest':
+				        $args = array(
+								'paged' => $paged,
+								'post_type'  => 'post',
+								'posts_per_page' => 5,
+								'orderby' => 'date',
+								'order' => 'DESC',
+								);
+				        break;
+				    default:
+				    case 'newest':
+				        $args = array(
+								'paged' => $paged,
+								'post_type'  => 'post',
+								'posts_per_page' => 5,
+								'orderby' => 'date',
+								'order' => 'ASC',
+								);
+				        break;
+				}
+
 		?>
 
 
