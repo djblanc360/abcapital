@@ -114,7 +114,7 @@ get_header();
 
 				<?php endwhile; wp_reset_query() ?>
 
-				<?php posts_pagination(); ?>
+				<?php numbered_pagination(); ?>
 
 			<?php  else : ?>
 
