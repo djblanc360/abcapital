@@ -70,11 +70,19 @@ get_header();
 	<div class="col-sm-8">
 			<form action="" method="POST" id="post-sort-form">
 				<select name="post-sort" form="post-sort-form" id="post-sort">
-				  <input type="submit" value="newest">Newest</input>
-				  <input type="submit" value="oldest">Oldest</input>
+				  <option value="newest">Newest</option>
+				  <option value="oldest">Oldest</option>
+					<noscript><input type="submit" value="Submit"></noscript>
 				</select>
 			</form>
 
+			<div class="dropdown">
+			  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+			    <button class="dropdown-item" type="button">Action</button>
+			    <button class="dropdown-item" type="button">Another action</button>
+			    <button class="dropdown-item" type="button">Something else here</button>
+			  </div>
+			</div>
 
 		<?php	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
 		<?php
