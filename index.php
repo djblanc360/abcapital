@@ -73,16 +73,13 @@ get_header();
 				  <option value="newest">Newest</option>
 				  <option value="oldest">Oldest</option>
 				</select>
-	
+			</form>
 
 		<?php	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
 		<?php
-				$args = '';
+				$args = $_POST['post-sort'];
 
-				switch( $_POST['post-sort'] ) {
-				    case '2':
-				        $args = ''; // your query
-				        break;
+				switch($args) {
 				    case 'oldest':
 								echo "this is the oldest";
 				        $args = array(
@@ -135,7 +132,7 @@ get_header();
 				<div class="clearfix"></div>
 			</div><!--end row-->
 
-				<?php endwhile; wp_reset_query();  ?>
+				<?php endwhile; ?>
 
 				<?php numbered_pagination(); ?>
 
