@@ -78,12 +78,12 @@ get_header();
 		  if ($_POST['select'] == 'mcommented') { $order = "&order=DESC&orderby=comment_count";  }
 		  if ($_POST['select'] == 'lcommented') { $order = "&order=ASC&orderby=comment_count";  }
 		?>
-		<form method="post" id="order">
+		<form method="post" id="news-post-sort">
 		  <select name="select" onchange='this.form.submit()'>
 		    <option value="newest"<?php selected( $_POST['select'],'newest', 1 ); ?>>Newest</option>
 		    <option value="oldest"<?php selected( $_POST['select'], 'oldest', 1 ); ?>>Oldest</option>
 		    <option value="mcommented"<?php selected( $_POST['select'],'mcommented', 1 ); ?>>Most commented</option>
-		    <option value="lcommented"<?php selected( $_POST['select'],'lcommented' , 1 ); ?>>least commented</option>
+		    <option value="lcommented"<?php selected( $_POST['select'],'lcommented' , 1 ); ?>>Least commented</option>
 		  </select>
 		</form>
 	<?php
