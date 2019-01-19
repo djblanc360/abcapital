@@ -71,11 +71,11 @@ get_header();
 
 		<?php
 		  $order = "&order=DESC";
-			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-		  if ($_POST['select'] == 'newest') { $order = "&order=DESC&page=$paged&posts_per_page=5"; }
-		  if ($_POST['select'] == 'oldest') { $order = "&order=ASC&page=$paged&posts_per_page=5";  }
-		  if ($_POST['select'] == 'mcommented') { $order = "&order=DESC&orderby=comment_count&page=$paged&posts_per_page=5";  }
-		  if ($_POST['select'] == 'lcommented') { $order = "&order=ASC&orderby=comment_count&page=$paged&posts_per_page=5";  }
+
+			if ($_POST['select'] == 'newest') { $order = "&order=DESC"; }
+		  if ($_POST['select'] == 'oldest') { $order = "&order=ASC";  }
+		  if ($_POST['select'] == 'mcommented') { $order = "&order=DESC&orderby=comment_count";  }
+		  if ($_POST['select'] == 'lcommented') { $order = "&order=ASC&orderby=comment_count";  }
 		?>
 		<form method="post" id="order">
 		  <select name="select" onchange='this.form.submit()'>
@@ -85,7 +85,16 @@ get_header();
 		    <option value="lcommented"<?php selected( $_POST['select'],'lcommented' , 1 ); ?>>least commented</option>
 		  </select>
 		</form>
+	<?php
+			$paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
 
+			$args = array(
+				'posts_per_page' => 5,
+				'paged' => $paged,
+			);
+
+			$the_query = new WP_Query( $args );
+	?>
 	<?php query_posts($query_string . $order); ?>
 	<?php
 			// query_posts($args);
