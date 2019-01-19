@@ -1,5 +1,5 @@
 $(function() {
-    $('#post-sort').change(function() {
+    $('#post-sort-form').change(function() {
         this.form.submit();
     });
 });
