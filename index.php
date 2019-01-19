@@ -89,8 +89,26 @@ get_header();
 				);
 				query_posts($args);
 			}
-		  if ($_POST['select'] == 'mcommented') { $order = "&order=DESC&orderby=comment_count";  }
-		  if ($_POST['select'] == 'lcommented') { $order = "&order=ASC&orderby=comment_count";  }
+		  if ($_POST['select'] == 'mcommented') {
+				$args = array(
+					'post_type' => 'post',
+					'posts_per_page' => 5,
+					'paged' => $paged,
+					'order' => 'DESC',
+					'orderby' => 'comment_count',
+				);
+				query_posts($args);
+			}
+		  if ($_POST['select'] == 'lcommented') {
+				$args = array(
+					'post_type' => 'post',
+					'posts_per_page' => 5,
+					'paged' => $paged,
+					'order' => 'ASC',
+					'orderby' => 'comment_count',
+				);
+				query_posts($args);
+			}
 
 	?>
 	<form method="post" id="order">
@@ -102,8 +120,6 @@ get_header();
 	  </select>
 	</form>
 	<?php
-	 		//query_posts($order);
-			// query_posts($args);
 			if (have_posts()) : while (have_posts()) : the_post();
 		?>
 			<div class="row">
