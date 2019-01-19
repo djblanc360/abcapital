@@ -71,16 +71,36 @@ get_header();
 
 		<?php
 			$paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
+			if ($_POST['select'] == 'newest') {
+				$args = array(
+					'post_type' => 'post',
+					'posts_per_page' => 5,
+					'paged' => $paged,
+					'order' => 'DESC'
+				);
+			}
+		  if ($_POST['select'] == 'oldest') {
+				$args = array(
+					'post_type' => 'post',
+					'posts_per_page' => 5,
+					'paged' => $paged,
+					'order' => 'ASC'
+				);
+			}
+		  if ($_POST['select'] == 'mcommented') { $order = "&order=DESC&orderby=comment_count";  }
+		  if ($_POST['select'] == 'lcommented') { $order = "&order=ASC&orderby=comment_count";  }
 
-
-			$args = array(
-				'post_type' => 'post',
-				'posts_per_page' => 5,
-				'paged' => $paged
-			);
 
 			$the_query = new WP_Query( $args );
 	?>
+	<form method="post" id="order">
+	  <select name="select" onchange='this.form.submit()'>
+	    <option value="newest"<?php selected( $_POST['select'],'newest', 1 ); ?>>Newest</option>
+	    <option value="oldest"<?php selected( $_POST['select'], 'oldest', 1 ); ?>>Oldest</option>
+	    <option value="mcommented"<?php selected( $_POST['select'],'mcommented', 1 ); ?>>Most commented</option>
+	    <option value="lcommented"<?php selected( $_POST['select'],'lcommented' , 1 ); ?>>least commented</option>
+	  </select>
+	</form>
 	<?php
 	 		//query_posts($order);
 			 query_posts($args);
