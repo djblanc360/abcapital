@@ -96,7 +96,11 @@ get_header();
 			);
 		}
 		else {
-
+			$args = array(
+			'paged' => $paged,
+			'post_type'  => 'post',
+			'posts_per_page' => 1
+			);
 		}
 		?>
 
