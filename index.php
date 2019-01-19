@@ -78,6 +78,7 @@ get_header();
 					'paged' => $paged,
 					'order' => 'DESC'
 				);
+				query_posts($args);
 			}
 		  if ($_POST['select'] == 'oldest') {
 				$args = array(
@@ -86,12 +87,11 @@ get_header();
 					'paged' => $paged,
 					'order' => 'ASC'
 				);
+				query_posts($args);
 			}
 		  if ($_POST['select'] == 'mcommented') { $order = "&order=DESC&orderby=comment_count";  }
 		  if ($_POST['select'] == 'lcommented') { $order = "&order=ASC&orderby=comment_count";  }
 
-
-			$the_query = new WP_Query( $args );
 	?>
 	<form method="post" id="order">
 	  <select name="select" onchange='this.form.submit()'>
@@ -103,7 +103,7 @@ get_header();
 	</form>
 	<?php
 	 		//query_posts($order);
-			 query_posts($args);
+			// query_posts($args);
 			if (have_posts()) : while (have_posts()) : the_post();
 		?>
 			<div class="row">
