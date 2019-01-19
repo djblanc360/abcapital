@@ -19,7 +19,7 @@ endif;
 /**
  * Add prev and next links to a numbered page link list
  */
-function wp_link_pages($args)
+function wp_link_pages_args_prevnext_add($args)
 {
     global $page, $numpages, $more, $pagenow;
 
