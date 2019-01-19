@@ -72,7 +72,6 @@ get_header();
 				<select name="post-sort" form="post-sort-form" id="post-sort">
 				  <option value="newest">Newest</option>
 				  <option value="oldest">Oldest</option>
-					<noscript><input type="submit" value="Submit"></noscript>
 				</select>
 			</form>
 
