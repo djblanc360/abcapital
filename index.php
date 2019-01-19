@@ -71,10 +71,11 @@ get_header();
 
 		<?php
 		  $order = "&order=DESC";
-		  if ($_POST['select'] == 'newest') { $order = "&order=DESC&posts_per_page=5"; }
-		  if ($_POST['select'] == 'oldest') { $order = "&order=ASC&posts_per_page=5";  }
-		  if ($_POST['select'] == 'mcommented') { $order = "&order=DESC&orderby=comment_count&posts_per_page=5";  }
-		  if ($_POST['select'] == 'lcommented') { $order = "&order=ASC&orderby=comment_count&posts_per_page=5";  }
+			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+		  if ($_POST['select'] == 'newest') { $order = "&order=DESC&page=$paged&posts_per_page=5"; }
+		  if ($_POST['select'] == 'oldest') { $order = "&order=ASC&page=$paged&posts_per_page=5";  }
+		  if ($_POST['select'] == 'mcommented') { $order = "&order=DESC&orderby=comment_count&page=$paged&posts_per_page=5";  }
+		  if ($_POST['select'] == 'lcommented') { $order = "&order=ASC&orderby=comment_count&page=$paged&posts_per_page=5";  }
 		?>
 		<form method="post" id="order">
 		  <select name="select" onchange='this.form.submit()'>
