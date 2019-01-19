@@ -18,35 +18,16 @@
 }
 
 /*Accordion*/
-.panel-group .panel {
-    border-radius: 0;
-    box-shadow: none;
-    border-color: #EEEEEE;
-}
-
-.panel-default > .panel-heading {
-    padding: 0;
-    border-radius: 0;
-    color: #212121;
-    background-color: #FAFAFA;
-    border-color: #EEEEEE;
-}
-
-.panel-title {
-    font-size: 14px;
-}
-
 .panel-title > a {
-    display: block;
-    padding: 15px;
-    text-decoration: none;
+  display: block;
+  position: relative;
 }
-
-.more-less {
-    float: right;
-    color: #212121;
+.panel-title > a:after {
+  content: "\f078"; /* fa-chevron-down */
+  font-family: 'FontAwesome';
+  position: absolute;
+  right: 0;
 }
-
-.panel-default > .panel-heading + .panel-collapse > .panel-body {
-    border-top-color: #EEEEEE;
+.panel-title > a[aria-expanded="true"]:after {
+  content: "\f077"; /* fa-chevron-up */
 }
