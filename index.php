@@ -98,7 +98,7 @@ get_header();
 
 			$the_query = new WP_Query( $args );
 	?>
-	<?php query_posts($query_string . $order); ?>
+	<?php query_posts($order); ?>
 	<?php
 			// query_posts($args);
 			if (have_posts()) : while (have_posts()) : the_post();
