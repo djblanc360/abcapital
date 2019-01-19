@@ -70,14 +70,16 @@ get_header();
 	<div class="col-sm-8">
 
 		<?php
-		  $order = "&order=DESC";
 			$paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
-			if ($_POST['select'] == 'newest') { $order = array(
+		  $order = "&order=DESC";
+
+			if ($_POST['select'] == 'newest') { $order = "&order=DESC"; }
+		  if ($_POST['select'] == 'oldest') { $order = array(
+				'post_type' => 'post',
 				'posts_per_page' => 5,
 				'paged' => $paged,
-				'order' => 'ASC',
+				'order' => 'ASC'
 			); }
-		  if ($_POST['select'] == 'oldest') { $order = "&order=ASC"; }
 		  if ($_POST['select'] == 'mcommented') { $order = "&order=DESC&orderby=comment_count";  }
 		  if ($_POST['select'] == 'lcommented') { $order = "&order=ASC&orderby=comment_count";  }
 		?>
@@ -93,9 +95,10 @@ get_header();
 
 
 			$args = array(
+				'post_type' => 'post',
 				'posts_per_page' => 5,
 				'paged' => $paged,
-				'order' => 'ASC',
+				'order' => 'ASC'
 			);
 
 			$the_query = new WP_Query( $args );
