@@ -68,7 +68,7 @@ get_header();
 		</div>
 	</div><!-- END CATEGORY -->
 	<div class="col-sm-8">
-			<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" id="post-sort-form">
+			<form action="" method="POST" id="post-sort-form">
 				<select name="post-sort" form="post-sort-form" id="post-sort" onchange="this.form.submit();">
 				  <option value="newest" onclick="myFunction()">Newest</option>
 				  <option value="oldest" onclick="myFunction()">Oldest</option>
