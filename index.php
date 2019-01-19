@@ -79,17 +79,15 @@ get_header();
 		<?php
 		if ($_POST['post-sort'] == 'newest') {
 			$args = array(
-			'post-sort'	=> 'newest',
 			'paged' => $paged,
 			'post_type'  => 'post',
 			'posts_per_page' => 5,
 			'orderby' => 'date',
-			'order' => 'DESC',
+			'order' => 'ASC',
 			);
 		}
 		else if ($_POST['post-sort'] == 'oldest') {
 			$args = array(
-			'post-sort'	=> 'oldest',
 			'paged' => $paged,
 			'post_type'  => 'post',
 			'posts_per_page' => 5,
