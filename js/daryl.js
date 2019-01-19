@@ -6,5 +6,6 @@ $(function() {
 });
 */
 function myFunction() {
-  document.getElementById("post-form-submit").submit();
+  $( "#post-form-submit" ).click();
+  console.log('it works');
 }
