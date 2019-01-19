@@ -76,15 +76,14 @@ get_header();
 			$args = array(
 				'post_type' => 'post',
 				'posts_per_page' => 5,
-				'paged' => $paged,
-				'order' => 'ASC'
+				'paged' => $paged
 			);
 
 			$the_query = new WP_Query( $args );
 	?>
-	<?php query_posts($order); ?>
 	<?php
-			// query_posts($args);
+	 		//query_posts($order);
+			 query_posts($args);
 			if (have_posts()) : while (have_posts()) : the_post();
 		?>
 			<div class="row">
