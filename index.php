@@ -109,7 +109,47 @@ get_header();
 		}
 		}
 		}
-		?>			
+		?>
+
+
+
+		<?php
+				 query_posts($query);
+				if (have_posts()) : while (have_posts()) : the_post();
+			?>
+				<div class="row">
+					<div class=" col-sm-3">
+
+						<?php echo the_post_thumbnail(); ?>
+					</div>
+
+					<div class=" col-sm-8">
+
+
+						<h4 class="post-title"><a href="<?php the_permalink(); ?>" class="post-title-link"><?php the_title(); ?></a></h4>
+						<p class="blogPostMeta">
+								<?php $postLikes = wp_ulike_get_post_likes(get_the_ID());?>
+								<?php the_author(); ?>  | <?php foreach((get_the_category()) as $category) { echo $category->cat_name . ' '; } ?> | <?php echo get_comments_number(); ?> Comments | <?php echo get_the_date('Y.M.d'); ?>  |  <?php if($postLikes) { echo $postLikes ; } else { echo '<span>0</span>'; } ?> Likes | Share This Post
+						</p>
+
+				<div class="post-text"> <?php the_excerpt(); ?> </div>
+				<a href="<?php the_permalink(); ?>" class="button read-more-button">Read More</a>
+					</div>
+					<div class="clearfix"></div>
+				</div><!--end row-->
+
+					<?php endwhile; wp_reset_query() ?>
+
+					<?php numbered_pagination(); ?>
+
+				<?php  else : ?>
+
+							<article class="no-posts">
+
+									<h1><?php _e('No posts were found.'); ?></h1>
+
+							</article>
+					<?php endif; ?>
 	</div><!--END NEWS -->
 </div><!-- END MAIN ROW -->
 
