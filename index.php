@@ -23,53 +23,50 @@ get_header();
 
 <div class="row news-category-column">
 	<div class="col-sm-2">
-
-		<div class="panel-group" id="news-category-accordion" role="tablist" aria-multiselectable="true">
-		    <div class="panel panel-default">
-		        <div class="panel-heading" role="tab" id="headingOne">
-		             <h4 class="panel-title">
-		        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-		          Category Section #1
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+			<div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="heading-1">
+		      <h4 class="panel-title">
+		        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-1" aria-expanded="false" aria-controls="collapse-1">
+		          Item 1
 		        </a>
 		      </h4>
-
-		        </div>
-		        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-		            <div class="panel-body">
-		            	<ul>
-										<li><a href="<?php get_category_by_slug( test1 ); ?>">Test 1</a></li>
-									</ul>
-		            </div>
-		        </div>
 		    </div>
-		    <div class="panel panel-default">
-		        <div class="panel-heading" role="tab" id="headingTwo">
-		             <h4 class="panel-title">
-		        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-		          Category Section #2
+		    <div id="collapse-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-1">
+		      <div class="panel-body">
+		        Text 1
+		      </div>
+		    </div>
+		  </div>
+		  <div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="heading-2">
+		      <h4 class="panel-title">
+		        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
+		          Item 2
 		        </a>
 		      </h4>
-
-		        </div>
-		        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-		            <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.</div>
-		        </div>
 		    </div>
-		    <div class="panel panel-default">
-		        <div class="panel-heading" role="tab" id="headingThree">
-		             <h4 class="panel-title">
-		        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-		          Category Sectionm #3
+		    <div id="collapse-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-2">
+		      <div class="panel-body">
+		        Text 2
+		      </div>
+		    </div>
+		  </div>
+		  <div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="heading-3">
+		      <h4 class="panel-title">
+		        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
+		          Item 3
 		        </a>
 		      </h4>
-
-		        </div>
-		        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-		            <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. </div>
-		        </div>
 		    </div>
-		</div>
-	</div><!-- END CATEGORY -->
+		    <div id="collapse-3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-3">
+		      <div class="panel-body">
+		        Text 3
+		      </div>
+		    </div>
+		  </div>
+		</div>	</div><!-- END CATEGORY -->
 	<div class="col-sm-8">
 
 		<?php
