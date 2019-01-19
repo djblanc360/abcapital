@@ -68,88 +68,103 @@ get_header();
 		</div>
 	</div><!-- END CATEGORY -->
 	<div class="col-sm-8">
-		<form action="" method="GET">
-		<select name="sort" id="sort">
-		<option value="DESC" <?php selected( get_query_var( 'sort' ), 'DESC' ); ?>>Sort by Newest</option>
-		<option value="ASC" <?php selected( get_query_var( 'sort' ), 'ASC' ); ?>>Sort by Oldest</option>
-		<option value="views" <?php selected( get_query_var( 'sort' ), 'views' ); ?>>Sort by Most Viewed</option>
-		</select>
+			<form action="" method="POST" id="post-sort-form">
+				<select name="post-sort" form="post-sort-form" id="post-sort" onchange="this.form.submit();" >
+				  <option value="newest" onclick="myFunction()">Newest</option>
+				  <option value="oldest" onclick="myFunction()">Oldest</option>
+				</select>
+			</form>
+
+		<?php	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
+		<?php
+				//$args = $_POST['post-sort'];
+				$args ='';
+				if(isset($_POST['post-sort'])) {
+					$args = $_POST['post-sort'];
+
+				switch($args) {
+				    case 'oldest':
+								echo "this is the oldest";
+
+				        $args = array(
+								'paged' => $paged,
+								'post_type'  => 'post',
+								'posts_per_page' => 5,
+								'orderby' => 'date',
+								'order' => 'ASC',
+								);
+				        break;
+				    default:
+				    case 'newest':
+								echo "this is the newest";
+				        $args = array(
+								'paged' => $paged,
+								'post_type'  => 'post',
+								'posts_per_page' => 5,
+								'orderby' => 'date',
+								'order' => 'DESC',
+								);
+				        break;
+				}
+		}
+		?>
+		<?php
+		  $order = "&order=DESC";
+		  if ($_POST['select'] == 'title') { $order = "&order=ASC&orderby=title";  }
+		  if ($_POST['select'] == 'newest') { $order = "&order=DESC"; }
+		  if ($_POST['select'] == 'oldest') { $order = "&order=ASC";  }
+		  if ($_POST['select'] == 'mcommented') { $order = "&order=DESC&orderby=comment_count";  }
+		  if ($_POST['select'] == 'lcommented') { $order = "&order=ASC&orderby=comment_count";  }
+		?>
+		<form method="post" id="order">
+		  Sort reviews by:
+		  <select name="select" onchange='this.form.submit()'>
+		    <option value="title"<?php selected( $_POST['select'],'title', 1 ); ?>>Title</option>
+		    <option value="newest"<?php selected( $_POST['select'],'newest', 1 ); ?>>Newest</option>
+		    <option value="oldest"<?php selected( $_POST['select'], 'oldest', 1 ); ?>>Oldest</option>
+		    <option value="mcommented"<?php selected( $_POST['select'],'mcommented', 1 ); ?>>Most commented</option>
+		    <option value="lcommented"<?php selected( $_POST['select'],'lcommented' , 1 ); ?>>least commented</option>
+		  </select>
 		</form>
 
-		<?php
-		add_action( 'init', 'custom_rewrite_rules' );
-
-		function custom_rewrite_rules() {
-		// add a news query var
-		add_rewrite_tag( '%sort%', '([^/]+)' );
-		}
+	<?php query_posts($query_string . $order); ?>
+	<?php
+			// query_posts($args);
+			if (have_posts()) : while (have_posts()) : the_post();
 		?>
+			<div class="row">
+				<div class=" col-sm-3">
 
-		<?php
-		add_action( 'pre_get_posts', 'custom_pre_get_posts' );
+					<?php echo the_post_thumbnail(); ?>
+				</div>
 
-		function custom_pre_get_posts( $query ) {
-
-		// don't affect wp-admin screens
-		if ( is_admin() )
-		return;
-
-		// vars
-		$sort = get_query_var( 'sort' );
-
-		/** change the order of posts in the main query */
-		if ( $query->is_main_query() && $sort ) {
-		// change 'order' (ASC or DESC)
-		if ( in_array( $sort, array( 'ASC', 'DESC' ) ) ) {
-		$query->set( 'order', $sort );
-		// most views
-		} else if ( 'views' == $sort ) {
-		$query->set( 'orderby', 'meta_value_num' );
-		$query->set( 'meta_key', $sort );
-		}
-		}
-		}
-		?>
+				<div class=" col-sm-8">
 
 
+					<h4 class="post-title"><a href="<?php the_permalink(); ?>" class="post-title-link"><?php the_title(); ?></a></h4>
+					<p class="blogPostMeta">
+							<?php $postLikes = wp_ulike_get_post_likes(get_the_ID());?>
+							<?php the_author(); ?>  | <?php foreach((get_the_category()) as $category) { echo $category->cat_name . ' '; } ?> | <?php echo get_comments_number(); ?> Comments | <?php echo get_the_date('Y.M.d'); ?>  |  <?php if($postLikes) { echo $postLikes ; } else { echo '<span>0</span>'; } ?> Likes | Share This Post
+					</p>
 
-		<?php
-				 query_posts($query);
-				if (have_posts()) : while (have_posts()) : the_post();
-			?>
-				<div class="row">
-					<div class=" col-sm-3">
+			<div class="post-text"> <?php the_excerpt(); ?> </div>
+			<a href="<?php the_permalink(); ?>" class="button read-more-button">Read More</a>
+				</div>
+				<div class="clearfix"></div>
+			</div><!--end row-->
 
-						<?php echo the_post_thumbnail(); ?>
-					</div>
+				<?php endwhile; wp_reset_query() ?>
 
-					<div class=" col-sm-8">
+				<?php numbered_pagination(); ?>
 
+			<?php  else : ?>
 
-						<h4 class="post-title"><a href="<?php the_permalink(); ?>" class="post-title-link"><?php the_title(); ?></a></h4>
-						<p class="blogPostMeta">
-								<?php $postLikes = wp_ulike_get_post_likes(get_the_ID());?>
-								<?php the_author(); ?>  | <?php foreach((get_the_category()) as $category) { echo $category->cat_name . ' '; } ?> | <?php echo get_comments_number(); ?> Comments | <?php echo get_the_date('Y.M.d'); ?>  |  <?php if($postLikes) { echo $postLikes ; } else { echo '<span>0</span>'; } ?> Likes | Share This Post
-						</p>
+						<article class="no-posts">
 
-				<div class="post-text"> <?php the_excerpt(); ?> </div>
-				<a href="<?php the_permalink(); ?>" class="button read-more-button">Read More</a>
-					</div>
-					<div class="clearfix"></div>
-				</div><!--end row-->
+								<h1><?php _e('No posts were found.'); ?></h1>
 
-					<?php endwhile; wp_reset_query() ?>
-
-					<?php numbered_pagination(); ?>
-
-				<?php  else : ?>
-
-							<article class="no-posts">
-
-									<h1><?php _e('No posts were found.'); ?></h1>
-
-							</article>
-					<?php endif; ?>
+						</article>
+				<?php endif; ?>
 	</div><!--END NEWS -->
 </div><!-- END MAIN ROW -->
 
