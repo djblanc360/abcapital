@@ -70,8 +70,8 @@ get_header();
 	<div class="col-sm-8">
 			<form action="" method="POST" id="post-sort-form">
 				<select name="post-sort" form="post-sort-form" id="post-sort">
-				  <option name="newest" value="newest">Newest</option>
-				  <option name="oldest" value="oldest">Oldest</option>
+				  <option value="newest">Newest</option>
+				  <option value="oldest">Oldest</option>
 				</select>
 			</form>
 
@@ -132,7 +132,7 @@ get_header();
 				<div class="clearfix"></div>
 			</div><!--end row-->
 
-				<?php endwhile; wp_reset_query(); ?>
+				<?php endwhile; wp_reset_query();  ?>
 
 				<?php numbered_pagination(); ?>
 
