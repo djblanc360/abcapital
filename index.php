@@ -70,9 +70,9 @@ get_header();
 	<div class="col-sm-8">
 			<form action="" method="POST" id="post-sort-form">
 				<select name="post-sort" form="post-sort-form" id="post-sort" onchange="this.form.submit()">
-				  <option value="newest">Newest</option>
-				  <option value="oldest">Oldest</option>
-					<noscript><input type="submit" value="Submit"></noscript>
+				  <option value="newest"><noscript><input type="submit" value="Newest">Newest</noscript></option>
+				  <option value="oldest"><noscript><input type="submit" value="Oldest">Oldest</noscript></option>
+
 				</select>
 			</form>
 
@@ -89,7 +89,7 @@ get_header();
 								'post_type'  => 'post',
 								'posts_per_page' => 5,
 								'orderby' => 'date',
-								'order' => 'DESC',
+								'order' => 'ASC',
 								);
 				        break;
 				    default:
@@ -100,7 +100,7 @@ get_header();
 								'post_type'  => 'post',
 								'posts_per_page' => 5,
 								'orderby' => 'date',
-								'order' => 'ASC',
+								'order' => 'DESC',
 								);
 				        break;
 				}
