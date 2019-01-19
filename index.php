@@ -68,18 +68,20 @@ get_header();
 		</div>
 	</div><!-- END CATEGORY -->
 	<div class="col-sm-8">
-			<form action="" method="POST" id="post-sort-form">
-				<select name="post-sort" form="post-sort-form" id="post-sort">
+			<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" id="post-sort-form">
+				<select name="post-sort" form="post-sort-form" id="post-sort" onchange="this.form.submit();">
 				  <option value="newest" onclick="myFunction()">Newest</option>
 				  <option value="oldest" onclick="myFunction()">Oldest</option>
-					<noscript><input type="submit" value="Submit" id="post-form-submit"></noscript>
 				</select>
 			</form>
 
 		<?php	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
 		<?php
-				$args = $_POST['post-sort'];
-				echo $args;
+				//$args = $_POST['post-sort'];
+				$args ='';
+				if(isset($_POST['post-sort'])) {
+					$args = $_POST['post-sort'];
+
 				switch($args) {
 				    case 'oldest':
 								echo "this is the oldest";
@@ -104,7 +106,7 @@ get_header();
 								);
 				        break;
 				}
-
+		}
 		?>
 		</form>
 
