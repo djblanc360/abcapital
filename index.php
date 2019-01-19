@@ -84,7 +84,7 @@ get_header();
 			'post_type'  => 'post',
 			'posts_per_page' => 5,
 			'orderby' => 'date',
-			'order' => 'ASC',
+			'order' => 'DESC',
 			);
 		}
 		else if ($_POST['post-sort'] == 'oldest') {
