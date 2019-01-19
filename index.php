@@ -108,8 +108,34 @@ get_header();
 				}
 		}
 		?>
-		</form>
+<?php
 
+		$arr = ["Cat", "Dog", "Cow" ];
+
+		if( $_POST['animal']){
+		   $animal=$_POST['animal'];
+		   echo $animal;
+
+		}
+
+?>
+
+<form name="f" id="a" method="post" action="">
+<select id="animal" name="animal" onchange="this.form.submit()" >
+  <option value="0">--Select Animal--</option>
+  <?php
+
+   foreach ($arr as $a){
+
+    if($a == $animal){
+        echo "<option value='{$a}' selected >$a</option>";
+    }else{
+        echo "<option value='{$a}' >$a</option>";
+    }
+   }
+   ?>
+ </select>
+ </form>
 
 	<?php
 			 query_posts($args);
