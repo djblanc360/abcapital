@@ -101,7 +101,7 @@ get_header();
 	<?php query_posts($query_string . $order); ?>
 	<?php
 			// query_posts($args);
-			if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post();
+			if (have_posts()) : while ($the_query->have_posts()) : $the_query->the_post();
 		?>
 			<div class="row">
 				<div class=" col-sm-3">
