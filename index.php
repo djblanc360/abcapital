@@ -132,7 +132,7 @@ get_header();
 				<div class="clearfix"></div>
 			</div><!--end row-->
 
-				<?php endwhile; ?>
+				<?php endwhile; wp_reset_query() ?>
 
 				<?php numbered_pagination(); ?>
 
