@@ -84,6 +84,7 @@ get_header();
 				        $args = ''; // your query
 				        break;
 				    case 'oldest':
+								echo "this is the oldest";
 				        $args = array(
 								'paged' => $paged,
 								'post_type'  => 'post',
@@ -94,6 +95,7 @@ get_header();
 				        break;
 				    default:
 				    case 'newest':
+								echo "this is the newest";
 				        $args = array(
 								'paged' => $paged,
 								'post_type'  => 'post',
