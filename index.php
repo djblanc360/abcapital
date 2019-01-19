@@ -14,16 +14,14 @@
 
 get_header();
 ?>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
 <div class="row news-category-column">
 	<div class="col-sm-2">
 
-		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+		<div class="panel-group" id="news-category-accordion" role="tablist" aria-multiselectable="true">
 		    <div class="panel panel-default">
 		        <div class="panel-heading" role="tab" id="headingOne">
 		             <h4 class="panel-title">
