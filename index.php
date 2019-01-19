@@ -70,8 +70,9 @@ get_header();
 	<div class="col-sm-8">
 			<form action="" method="POST" id="post-sort-form">
 				<select name="post-sort" form="post-sort-form" id="post-sort">
-				  <option value="newest">Newest</option>
-				  <option value="oldest">Oldest</option>
+				  <option value="newest"><input type="submit" value="Submit"></option>
+				  <option value="oldest"><input type="submit" value="Submit"></option>
+					<noscript><input type="submit" value="Submit"></noscript>
 				</select>
 			</form>
 
