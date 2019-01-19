@@ -69,7 +69,7 @@ get_header();
 	</div><!-- END CATEGORY -->
 	<div class="col-sm-8">
 			<form action="" method="POST" id="post-sort-form">
-				<select name="post-sort" form="post-sort-form" id="post-sort" onchange="this.form.submit();">
+				<select name="post-sort" form="post-sort-form" id="post-sort" onchange="this.form.submit();" >
 				  <option value="newest" onclick="myFunction()">Newest</option>
 				  <option value="oldest" onclick="myFunction()">Oldest</option>
 				</select>
@@ -108,34 +108,22 @@ get_header();
 				}
 		}
 		?>
-<?php
 
-		$arr = ["Cat", "Dog", "Cow" ];
 
-		if( $_POST['animal']){
-		   $animal=$_POST['animal'];
-		   echo $animal;
+		<form action="<? bloginfo('url'); ?>" method="get">
+		<select name="page_id" id="page_id">
+		<?php
+		global $post;
+		$args = array( 'numberposts' => -1);
+		$posts = get_posts($args);
+		foreach( $posts as $post ) : setup_postdata($post); ?>
+		    <option value="<? echo $post->ID; ?>"><?php the_title(); ?></option>
+		<?php endforeach; ?>
+		</select>
+		<input type="submit" name="submit" value="view" />
+		</form>
 
-		}
 
-?>
-
-<form name="f" id="a" method="post" action="">
-<select id="animal" name="animal" onchange="this.form.submit()" >
-  <option value="0">--Select Animal--</option>
-  <?php
-
-   foreach ($arr as $a){
-
-    if($a == $animal){
-        echo "<option value='{$a}' selected >$a</option>";
-    }else{
-        echo "<option value='{$a}' >$a</option>";
-    }
-   }
-   ?>
- </select>
- </form>
 
 	<?php
 			 query_posts($args);
