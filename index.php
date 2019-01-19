@@ -68,58 +68,16 @@ get_header();
 		</div>
 	</div><!-- END CATEGORY -->
 	<div class="col-sm-8">
-			<form action="" method="POST" id="post-sort-form">
-				<select name="post-sort" form="post-sort-form" id="post-sort" onchange="this.form.submit();" >
-				  <option value="newest" onclick="myFunction()">Newest</option>
-				  <option value="oldest" onclick="myFunction()">Oldest</option>
-				</select>
-			</form>
 
-		<?php	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
-		<?php
-				//$args = $_POST['post-sort'];
-				$args ='';
-				if(isset($_POST['post-sort'])) {
-					$args = $_POST['post-sort'];
-
-				switch($args) {
-				    case 'oldest':
-								echo "this is the oldest";
-
-				        $args = array(
-								'paged' => $paged,
-								'post_type'  => 'post',
-								'posts_per_page' => 5,
-								'orderby' => 'date',
-								'order' => 'ASC',
-								);
-				        break;
-				    default:
-				    case 'newest':
-								echo "this is the newest";
-				        $args = array(
-								'paged' => $paged,
-								'post_type'  => 'post',
-								'posts_per_page' => 5,
-								'orderby' => 'date',
-								'order' => 'DESC',
-								);
-				        break;
-				}
-		}
-		?>
 		<?php
 		  $order = "&order=DESC";
-		  if ($_POST['select'] == 'title') { $order = "&order=ASC&orderby=title";  }
 		  if ($_POST['select'] == 'newest') { $order = "&order=DESC"; }
 		  if ($_POST['select'] == 'oldest') { $order = "&order=ASC";  }
 		  if ($_POST['select'] == 'mcommented') { $order = "&order=DESC&orderby=comment_count";  }
 		  if ($_POST['select'] == 'lcommented') { $order = "&order=ASC&orderby=comment_count";  }
 		?>
 		<form method="post" id="order">
-		  Sort reviews by:
 		  <select name="select" onchange='this.form.submit()'>
-		    <option value="title"<?php selected( $_POST['select'],'title', 1 ); ?>>Title</option>
 		    <option value="newest"<?php selected( $_POST['select'],'newest', 1 ); ?>>Newest</option>
 		    <option value="oldest"<?php selected( $_POST['select'], 'oldest', 1 ); ?>>Oldest</option>
 		    <option value="mcommented"<?php selected( $_POST['select'],'mcommented', 1 ); ?>>Most commented</option>
