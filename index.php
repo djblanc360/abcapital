@@ -112,7 +112,7 @@ get_header();
 				<div class="clearfix"></div>
 			</div><!--end row-->
 
-				<?php endwhile; wp_reset_query() ?>
+				<?php endwhile; ?>
 
 				<?php numbered_pagination(); ?>
 
