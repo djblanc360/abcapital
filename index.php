@@ -69,10 +69,11 @@ get_header();
 	</div><!-- END CATEGORY -->
 	<div class="col-sm-8">
 			<form action="" method="POST" id="post-sort-form">
-				<select name="post-sort" form="post-sort-form" id="post-sort" onchange="this.form.submit()">
-				  <option value="newest">Newest</option>
-				  <option value="oldest">Oldest</option>
+				<select name="post-sort" form="post-sort-form" id="post-sort">
+				  <input type="submit" value="newest">Newest</input>
+				  <input type="submit" value="oldest">Oldest</input>
 				</select>
+			</form>
 
 
 		<?php	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
@@ -145,7 +146,6 @@ get_header();
 
 						</article>
 				<?php endif; ?>
-				</form>
 	</div><!--END NEWS -->
 </div><!-- END MAIN ROW -->
 
