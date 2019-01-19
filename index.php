@@ -71,9 +71,13 @@ get_header();
 
 		<?php
 		  $order = "&order=DESC";
-
+			$paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
 			if ($_POST['select'] == 'newest') { $order = "&order=DESC"; }
-		  if ($_POST['select'] == 'oldest') { $order = "&order=ASC";  }
+		  if ($_POST['select'] == 'oldest') { $order = array(
+				'posts_per_page' => 5,
+				'paged' => $paged,
+				'&order' => 'ASC',
+			);  }
 		  if ($_POST['select'] == 'mcommented') { $order = "&order=DESC&orderby=comment_count";  }
 		  if ($_POST['select'] == 'lcommented') { $order = "&order=ASC&orderby=comment_count";  }
 		?>
@@ -86,16 +90,17 @@ get_header();
 		  </select>
 		</form>
 	<?php
-			$paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
+
 
 			$args = array(
 				'posts_per_page' => 5,
 				'paged' => $paged,
+				'&order' => 'ASC',
 			);
 
 			$the_query = new WP_Query( $args );
 	?>
-	<?php query_posts($query_string . $order . $args); ?>
+	<?php query_posts($query_string . $order); ?>
 	<?php
 			// query_posts($args);
 			if (have_posts()) : while (have_posts()) : the_post();
