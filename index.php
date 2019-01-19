@@ -72,16 +72,18 @@ get_header();
 				<select name="post-sort" form="post-sort-form" id="post-sort" onchange="this.form.submit()">
 				  <option value="newest">Newest</option>
 				  <option value="oldest">Oldest</option>
+					<noscript><input type="submit" value="Submit"></noscript>
 				</select>
 			</form>
 
 		<?php	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
 		<?php
 				$args = $_POST['post-sort'];
-
+				echo $args;
 				switch($args) {
 				    case 'oldest':
 								echo "this is the oldest";
+
 				        $args = array(
 								'paged' => $paged,
 								'post_type'  => 'post',
