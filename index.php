@@ -68,100 +68,48 @@ get_header();
 		</div>
 	</div><!-- END CATEGORY -->
 	<div class="col-sm-8">
-			<form action="" method="POST" id="post-sort-form">
-				<select name="post-sort" form="post-sort-form" id="post-sort" onchange="this.form.submit();" >
-				  <option value="newest" onclick="myFunction()">Newest</option>
-				  <option value="oldest" onclick="myFunction()">Oldest</option>
-				</select>
-			</form>
+		<form action="" method="GET">
+		<select name="sort" id="sort">
+		<option value="DESC" <?php selected( get_query_var( 'sort' ), 'DESC' ); ?>>Sort by Newest</option>
+		<option value="ASC" <?php selected( get_query_var( 'sort' ), 'ASC' ); ?>>Sort by Oldest</option>
+		<option value="views" <?php selected( get_query_var( 'sort' ), 'views' ); ?>>Sort by Most Viewed</option>
+		</select>
+		</form>
 
-		<?php	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
 		<?php
-				//$args = $_POST['post-sort'];
-				$args ='';
-				if(isset($_POST['post-sort'])) {
-					$args = $_POST['post-sort'];
+		add_action( 'init', 'custom_rewrite_rules' );
 
-				switch($args) {
-				    case 'oldest':
-								echo "this is the oldest";
-
-				        $args = array(
-								'paged' => $paged,
-								'post_type'  => 'post',
-								'posts_per_page' => 5,
-								'orderby' => 'date',
-								'order' => 'ASC',
-								);
-				        break;
-				    default:
-				    case 'newest':
-								echo "this is the newest";
-				        $args = array(
-								'paged' => $paged,
-								'post_type'  => 'post',
-								'posts_per_page' => 5,
-								'orderby' => 'date',
-								'order' => 'DESC',
-								);
-				        break;
-				}
+		function custom_rewrite_rules() {
+		// add a news query var
+		add_rewrite_tag( '%sort%', '([^/]+)' );
 		}
 		?>
 
-
-		<form action="<? bloginfo('url'); ?>" method="get">
-		<select name="page_id" id="page_id">
 		<?php
-		global $post;
-		$args = array( 'numberposts' => -1);
-		$posts = get_posts($args);
-		foreach( $posts as $post ) : setup_postdata($post); ?>
-		    <option value="<? echo $post->ID; ?>"><?php the_title(); ?></option>
-		<?php endforeach; ?>
-		</select>
-		<input type="submit" name="submit" value="view" />
-		</form>
+		add_action( 'pre_get_posts', 'custom_pre_get_posts' );
 
+		function custom_pre_get_posts( $query ) {
 
+		// don't affect wp-admin screens
+		if ( is_admin() )
+		return;
 
-	<?php
-			 query_posts($args);
-			if (have_posts()) : while (have_posts()) : the_post();
-		?>
-			<div class="row">
-				<div class=" col-sm-3">
+		// vars
+		$sort = get_query_var( 'sort' );
 
-					<?php echo the_post_thumbnail(); ?>
-				</div>
-
-				<div class=" col-sm-8">
-
-
-					<h4 class="post-title"><a href="<?php the_permalink(); ?>" class="post-title-link"><?php the_title(); ?></a></h4>
-					<p class="blogPostMeta">
-							<?php $postLikes = wp_ulike_get_post_likes(get_the_ID());?>
-							<?php the_author(); ?>  | <?php foreach((get_the_category()) as $category) { echo $category->cat_name . ' '; } ?> | <?php echo get_comments_number(); ?> Comments | <?php echo get_the_date('Y.M.d'); ?>  |  <?php if($postLikes) { echo $postLikes ; } else { echo '<span>0</span>'; } ?> Likes | Share This Post
-					</p>
-
-			<div class="post-text"> <?php the_excerpt(); ?> </div>
-			<a href="<?php the_permalink(); ?>" class="button read-more-button">Read More</a>
-				</div>
-				<div class="clearfix"></div>
-			</div><!--end row-->
-
-				<?php endwhile; wp_reset_query() ?>
-
-				<?php numbered_pagination(); ?>
-
-			<?php  else : ?>
-
-						<article class="no-posts">
-
-								<h1><?php _e('No posts were found.'); ?></h1>
-
-						</article>
-				<?php endif; ?>
+		/** change the order of posts in the main query */
+		if ( $query->is_main_query() && $sort ) {
+		// change 'order' (ASC or DESC)
+		if ( in_array( $sort, array( 'ASC', 'DESC' ) ) ) {
+		$query->set( 'order', $sort );
+		// most views
+		} else if ( 'views' == $sort ) {
+		$query->set( 'orderby', 'meta_value_num' );
+		$query->set( 'meta_key', $sort );
+		}
+		}
+		}
+		?>			
 	</div><!--END NEWS -->
 </div><!-- END MAIN ROW -->
 
