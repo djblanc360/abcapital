@@ -14,14 +14,12 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer">
-
-		<p class="text-center"><em>these will be footer dynamic sidebar widgets</em></p>
 		
 		<div class="container">
 			
 			<div class="row">
 				<div class="col-sm-4">
-					<img src="https://placehold.it/200x75" alt="" class="footLogo">
+					<img src="<?php echo site_url(); ?>/wp-content/uploads/2019/02/ab-logo-white.png" alt="AB Capital Logo" width="300" class="footLogo">
 					<p>15 Corporate Plaza Dr, Suite 200<br/>Newport Beach, CA 92660</p>
 					<h3>More Information</h3>
 					<p>Page list widget goes here.</p>

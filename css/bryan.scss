@@ -1,8 +1,12 @@
-$blue: #212032;
+$blue: #162539;
 $white: #fff;
 $black: #000;
 
 // General
+body {
+	font-family: 'Montserrat', sans-serif;
+}
+
 h1, h2, h3, h4, h5 {
 	text-transform: uppercase;
 	font-weight: bold;
@@ -10,6 +14,7 @@ h1, h2, h3, h4, h5 {
 
 h2 {
 	font-size: 1.25rem;
+	margin-bottom: 1rem;
 }
 
 h3 {
@@ -29,14 +34,36 @@ section {
 	}
 }
 
+input[type="text"], input[type="email"], input[type="tel"], textarea {
+	width: 100%;
+    padding: 0.75rem 1.5rem;
+}
+
+input[type="submit"] {
+	width: 100%;
+    padding: 1rem 2rem;
+	color: $white;
+	background-color: $blue;
+	font-size: 1rem;
+	text-align: center;
+	font-weight: bold;
+	&:hover, &:focus {
+		background-color: lighten($blue,10%);
+		cursor: pointer;
+	}
+}
+
 #pageHead {
 	margin-top: 95px;
-	background: #444;
 	background-position: center;
 	background-size: cover;
+	position: relative;
 	h1 {
 		color: $white;
-		text-shadow: 0 0 45px #000;
+	}
+	.pageHeadContent {
+		z-index: 1;
+		position: relative;
 	}
 }
 
@@ -47,7 +74,7 @@ section {
     letter-spacing: 0.1rem;
     font-size: 0.75rem;
     padding: 0.8rem 1.75rem;
-    border: 1px solid #fff;
+    border: 2px solid #fff;
     font-weight: bold;
     transition: all .2s ease-in-out;
     -webkit-transition: all .2s ease-in-out;
@@ -61,6 +88,14 @@ section {
     	text-decoration: none;
     	background: $white;
     	color: #333;
+    }
+    &.readMoreBlue {
+    	color: $blue;
+    	border-color: $blue;
+    	&:hover {
+    		background-color: $blue;
+    		color: $white;
+    	}
     }
 }
 
@@ -101,6 +136,12 @@ section {
 	}
 }
 
+.cover {
+	background: rgba(0,0,0,0.4);
+	position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+}
+
 #coNums {
 	.coNumsNum {
 		font-size: 2rem;
@@ -120,8 +161,117 @@ section {
 }
 
 #ctaBanner {
-	background: #444;
 	color: #fff;
+	position: relative;
+	p {
+		margin-bottom: 0;
+	}
+	.ctaBannerContent {
+		position: relative;
+		z-index: 1;
+	}
+}
+
+#blogFeedHoriz {
+	.blogFeedHorizSlider {
+		.blogFeedHorizItemContainer {
+			height: 600px;
+			background-size: cover;
+			background-position: center;
+			position: relative;
+			.blogFeedHorizShadow {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+1,000000+100 */
+				background: transparent; /* Old browsers */
+				background: -moz-linear-gradient(top, transparent 1%, rgba(0,0,0,0.6) 100%); /* FF3.6-15 */
+				background: -webkit-linear-gradient(top, transparent 1%,rgba(0,0,0,0.6) 100%); /* Chrome10-25,Safari5.1-6 */
+				background: linear-gradient(to bottom, transparent 1%,rgba(0,0,0,0.6) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='transparent', endColorstr='rgba(0,0,0,0.6)',GradientType=0 ); /* IE6-9 */
+				height: 40%;
+			}
+			.blogFeedHorizText {
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				padding: 1rem;
+				color: $white;
+				text-align: center;
+				z-index: 1;
+				transition: all .3s ease-in-out;
+				-webkit-transition: all .3s ease-in-out;
+				-moz-transition: all .3s ease-in-out;
+				-o-transition: all .3s ease-in-out;
+			}
+			.blogFeedHorizButtons {
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: -120px;
+				padding: 1rem;
+				color: $white;
+				text-align: center;
+				z-index: 1;
+				transition: all .4s ease-in-out;
+				-webkit-transition: all .4s ease-in-out;
+				-moz-transition: all .4s ease-in-out;
+				-o-transition: all .4s ease-in-out;
+				p {
+					margin-bottom: 0;
+					a {
+						display: inline-block;
+					    width: 50px;
+					    height: 50px;
+					    padding: 0.7rem;
+						border-radius: 50%;
+						border: 2px solid $white;
+						transition: all .2s ease-in-out;
+						-webkit-transition: all .2s ease-in-out;
+						-moz-transition: all .2s ease-in-out;
+						-o-transition: all .2s ease-in-out;
+						i {
+							color: $white;
+						}
+						&:hover {
+							background-color: $white;
+							i {
+								color: $blue;
+							}
+						}
+					}
+				}
+			}
+			&:hover {
+				cursor: pointer;
+				.blogFeedHorizText {
+					bottom: 50px;
+				}
+				.blogFeedHorizButtons {
+					bottom: 0;
+				}
+			}
+		}
+		.slick-arrow {
+		    position: absolute;
+		    top: 50%;
+		    background: rgba(0,0,0,0.6);
+		    color: #fff;
+		    z-index: 1;
+		    &:hover {
+		    	background: #000;
+		    	cursor: pointer;
+		    }
+		    &.slick-prev {
+		    	left: 0;
+		    }
+		    &.slick-next {
+		    	right: 0;
+		    }
+		}
+	}
 }
 
 #officeMap {
@@ -129,15 +279,41 @@ section {
 	padding-bottom: 0;
 }
 
+.social-list {
+	margin-bottom: 0;
+	margin-left: 0;
+	li {
+		display: inline-block;
+		a {
+			padding: 0.25rem;
+			color: #fff;
+		}
+	}
+}
+
 // Navbar
 .navbar {
 	.nav-item {
 		.nav-link {
+			transition: all .2s ease-in-out;
+			-webkit-transition: all .2s ease-in-out;
+			-moz-transition: all .2s ease-in-out;
+			-o-transition: all .2s ease-in-out;
 			@media screen and (min-width:768px) {
 				padding: 2rem 1.5rem;
 				font-weight: bold;
 				text-transform: uppercase;
 				color: #333;
+				font-size: 0.8rem;
+			}
+		}
+	}
+	&.sticky {
+		.nav-item {
+			.nav-link {
+				@media screen and (min-width:768px) {
+					padding: 0.75rem 1.5rem;
+				}
 			}
 		}
 	}
@@ -148,6 +324,9 @@ section {
 	background-color: $blue;
 	color: #fff;
 	padding-top: 2rem;
+	.footLogo {
+		margin-bottom: 1rem;
+	}
 	#footDisc {
 		margin-top: 2rem;
 		background: #000;
@@ -168,8 +347,34 @@ section {
 // Home Page
 .home {
 	#introSlider {
-		padding-top: 0;
+		padding-top: 55px;
 		padding-bottom: 0;
+		min-height: 80vh;
+		color: #fff;
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		position: relative;
+		@media screen and (min-width:768px) {
+			padding-top: 100px;
+		}
+		.introSliderText {
+			z-index: 1;
+			h1 {
+				font-weight: bold;
+				@media screen and (min-width:768px) {
+					font-size: 4rem;
+				}
+			}
+			.readMore {
+				margin-top: 1rem;
+				margin-bottom: 1rem;
+				@media screen and (max-width:768px) {
+					margin-top: 0.25rem;
+					margin-bottom: 0.25rem;
+				}
+			}
+		}
 		.slick-arrow {
 		    position: absolute;
 		    top: 50%;
@@ -197,16 +402,69 @@ section {
 		background-color: $blue;
 		color: $white;
 		h2 {
-			font-weight: normal;
 			font-size: 1rem;
+		}
+		.threeFeatureIconContainer {
+			width: 75px;
+			height: 75px;
+			margin: auto;
+			margin-bottom: 1.25rem;
+			border-radius: 50%;
+			background-color: darken($blue,10%);
+			color: $white;
+			transition: all .3s ease-in-out;
+			-webkit-transition: all .3s ease-in-out;
+			-moz-transition: all .3s ease-in-out;
+			-o-transition: all .3s ease-in-out;
+			&:hover {
+				background-color: $white;
+				color: $blue;
+			}
+			i {
+				font-size: 1.5rem;
+			}
 		}
 	}
 	#recentDeals {
 		padding-top: 0;
 		padding-bottom: 0;
+		.recentDealsContainer {
+			background: #f2f2f2;
+			transform: scale(1);
+			box-shadow: none;
+			transition: all .3s ease-in-out;
+			-webkit-transition: all .3s ease-in-out;
+			-moz-transition: all .3s ease-in-out;
+			-o-transition: all .3s ease-in-out;
+			position: relative;
+			z-index: 1;
+			border: 1px solid #fff;
+			.recentDealsImgContainer {
+				width: 100%;
+				height: 300px;
+				background-size: cover;
+				background-position: center;
+			}
+			&.active, &:hover {
+				background: #fff;
+				transform: scale(1.025);
+				box-shadow: 0 0 25px -5px #000;
+				z-index: 2;
+			}
+		}
+		.recentDealsText {
+			text-align: center;
+			padding: 1rem;
+			min-height: 230px;
+			h3 {
+				margin-top: 1rem;
+				margin-bottom: 1rem;
+			}
+		}
 	}
 }
 
+// About Page
 .page-template-page-about {
 	.imgOffsetContainer {
 		background: #f2f2f2;
@@ -232,6 +490,10 @@ section {
 	#aboutProcess {
 		background-color: $blue;
 		color: #fff;
+		i {
+			margin: 1.5rem;
+			font-size: 2rem;
+		}
 	}
 	.memSlider {
 		.slick-arrow {
@@ -257,7 +519,7 @@ section {
 			margin-left: 15px;
 			margin-right: 15px;
 			.memImgContainer {
-				height: 220px;
+				height: 340px;
 				width: 100%;
 				background-size: cover;
 				background-position: center;
@@ -271,7 +533,227 @@ section {
 				    text-transform: none;
 				    margin-bottom: 1rem;
 				}
+				.memDesc {
+					font-size: 0.75rem;
+				}
 			}
+		}
+	}
+}
+
+// Invest Page
+.page-template-page-invest {
+	#investIntro {
+		h2 {
+			margin-top: 2rem;
+		}
+	}
+	#investStrat {
+		background-color: $blue;
+		background-size: cover;
+		background-position: center;
+		color: $white;
+	}
+	#investTypes {
+		padding-bottom: 0;
+		.investTypesTabs {
+			p {
+				margin-bottom: 1px;
+			}
+			.investTypeTab {
+				background: $white;
+			    font-weight: bold;
+			    text-transform: uppercase;
+			    font-size: 0.8rem;
+			    padding: 1rem;
+			    color: #333;
+			    opacity: 0.3;
+			    transition: all .3s ease-in-out;
+			    -webkit-transition: all .3s ease-in-out;
+			    -moz-transition: all .3s ease-in-out;
+			    -o-transition: all .3s ease-in-out;
+			    border: 0;
+			    border-bottom: 2px solid transparent;
+			    display: inline-block;
+			    &:visited, &:focus {
+					background: $white;
+			    	text-decoration: none;
+			    	color: #333;
+			    	outline: 0;
+			    }
+			    &:hover {
+					background: $white;
+			    	color: $blue;
+			    	opacity: 1;
+			    	border-bottom: 2px solid $blue;
+			    	text-decoration: none;
+			    	cursor: pointer;
+			    }
+			    &.slick-current {
+			    	color: $blue;
+			    	opacity: 1;
+			    	border-bottom: 2px solid $blue;
+			    }
+			}
+		}
+		.investTypesContent {
+			background: $blue;
+			color: #fff;
+		}
+	}
+	#investorQs {
+		.investorQsContainer {
+			width: 600px;
+			max-width: 100%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+}
+
+.page-template-page-closed-investments {
+	#closedDealList {
+		padding-top: 0;
+		.closedDealContainer {
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			height: 500px;
+			position: relative;
+			margin-bottom: 30px;
+			.closedDealTextContainer {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+1,000000+100 */
+				background: transparent; /* Old browsers */
+				background: -moz-linear-gradient(top, transparent 1%, rgba(0,0,0,0.8) 100%); /* FF3.6-15 */
+				background: -webkit-linear-gradient(top, transparent 1%,rgba(0,0,0,0.8) 100%); /* Chrome10-25,Safari5.1-6 */
+				background: linear-gradient(to bottom, transparent 1%,rgba(0,0,0,0.8) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='transparent', endColorstr='rgba(0,0,0,0.8)',GradientType=0 ); /* IE6-9 */
+				padding: 2rem;
+				padding-top: 8rem;
+				// opacity: 0;
+				transition: all .3s ease-in-out;
+				-webkit-transition: all .3s ease-in-out;
+				-moz-transition: all .3s ease-in-out;
+				-o-transition: all .3s ease-in-out;
+				@media screen and (max-width: 768px) {
+					opacity: 1;
+				}
+				.closedDealText {
+					position: relative;
+					color: #fff;
+					// bottom: -100px;
+					bottom: 0;
+					transition: all .3s ease-in-out;
+					-webkit-transition: all .3s ease-in-out;
+					-moz-transition: all .3s ease-in-out;
+					-o-transition: all .3s ease-in-out;
+					@media screen and (max-width: 768px) {
+						bottom: 0;
+						.readMore {
+							margin-top: 1rem;
+						}
+					}
+					p {
+						margin-bottom: 0;
+					}
+				}
+			}
+			&:hover {
+				cursor: pointer;
+				.closedDealTextContainer {
+					opacity: 1;
+					.closedDealText {
+						bottom: 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+.single-investment {
+	padding-top: 3rem;
+	@media screen and (min-width:768px) {
+		padding-top: 5rem;
+	}
+	#closedInvestmentContent {
+		.entry-content {
+			.investContent {
+				@media screen and (min-width:768px) {
+					position: relative;
+					right: -4rem;
+				}
+			}
+			.investStatsCont {
+				padding: 0.5rem 1rem;
+				background-color: #f2f2f2;
+				margin-bottom: 1rem;
+				@media screen and (min-width:768px) {
+					position: relative;
+					top: -5rem;
+					right: -4rem;
+					padding: 1rem 2rem;
+				}
+				.investStatsInner {
+					color: #333;
+					.investStatRow {
+						border-bottom: 1px dotted #c0c0c0;
+						padding-top: 1rem;
+						padding-bottom: 1rem;
+						&:last-child {
+							border-bottom: 0;
+						}
+						p {
+							margin: 0;
+							font-size: 0.75rem;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.page-template-page-faq {
+	.faqAccordion {
+		.accordion {
+			.card {
+				border: 0;
+				background-color: transparent;
+				margin-bottom: 1rem;
+				.card-header {
+					padding: 0;
+					border-radius: 0;
+					border: 0;
+					background-color: transparent;
+					h2 button {
+						display: block;
+						width: 100%;
+						text-align: left;
+						background-color: $blue;
+						text-decoration: none;
+						color: #fff;
+						font-weight: bold;
+						padding: 1rem 2rem;
+						&.collapsed {
+							color: #333;
+							background-color: #f2f2f2;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.page-template-page-contact {
+	.social-list {
+		li a {
+			color: #000;
 		}
 	}
 }

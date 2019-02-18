@@ -14,113 +14,69 @@
 
 get_header();
 ?>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></script>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
 <div class="row news-category-column">
 	<div class="col-sm-2">
+		
 		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-			<div class="panel panel-default">
-		    <div class="panel-heading" role="tab" id="heading-1">
-		      <h4 class="panel-title">
-		        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-1" aria-expanded="false" aria-controls="collapse-1">
-		          Item 1
+		    <div class="panel panel-default">
+		        <div class="panel-heading" role="tab" id="headingOne">
+		             <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+		          Category Section #1
 		        </a>
 		      </h4>
+
+		        </div>
+		        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+		            <div class="panel-body">
+		            	<ul>
+										<li><a href="<?php get_category_by_slug( test1 ); ?>">Test 1</a></li>
+									</ul>
+		            </div>
+		        </div>
 		    </div>
-		    <div id="collapse-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-1">
-		      <div class="panel-body">
-		        Text 1
-		      </div>
-		    </div>
-		  </div>
-		  <div class="panel panel-default">
-		    <div class="panel-heading" role="tab" id="heading-2">
-		      <h4 class="panel-title">
-		        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
-		          Item 2
+		    <div class="panel panel-default">
+		        <div class="panel-heading" role="tab" id="headingTwo">
+		             <h4 class="panel-title">
+		        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+		          Category Section #2
 		        </a>
 		      </h4>
+
+		        </div>
+		        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+		            <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.</div>
+		        </div>
 		    </div>
-		    <div id="collapse-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-2">
-		      <div class="panel-body">
-		        Text 2
-		      </div>
-		    </div>
-		  </div>
-		  <div class="panel panel-default">
-		    <div class="panel-heading" role="tab" id="heading-3">
-		      <h4 class="panel-title">
-		        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
-		          Item 3
+		    <div class="panel panel-default">
+		        <div class="panel-heading" role="tab" id="headingThree">
+		             <h4 class="panel-title">
+		        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+		          Category Sectionm #3
 		        </a>
 		      </h4>
+
+		        </div>
+		        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+		            <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. </div>
+		        </div>
 		    </div>
-		    <div id="collapse-3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-3">
-		      <div class="panel-body">
-		        Text 3
-		      </div>
-		    </div>
-		  </div>
-		</div>	</div><!-- END CATEGORY -->
+		</div>
+	</div><!-- END CATEGORY -->
 	<div class="col-sm-8">
-
 		<?php
-			$paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
-			if ($_POST['select'] == 'newest') {
-				$args = array(
-					'post_type' => 'post',
-					'posts_per_page' => 5,
-					'paged' => $paged,
-					'order' => 'DESC'
-				);
-				query_posts($args);
-			}
-		  if ($_POST['select'] == 'oldest') {
-				$args = array(
-					'post_type' => 'post',
-					'posts_per_page' => 5,
-					'paged' => $paged,
-					'order' => 'ASC'
-				);
-				query_posts($args);
-			}
-		  if ($_POST['select'] == 'mcommented') {
-				$args = array(
-					'post_type' => 'post',
-					'posts_per_page' => 5,
-					'paged' => $paged,
-					'order' => 'DESC',
-					'orderby' => 'comment_count',
-				);
-				query_posts($args);
-			}
-		  if ($_POST['select'] == 'lcommented') {
-				$args = array(
-					'post_type' => 'post',
-					'posts_per_page' => 5,
-					'paged' => $paged,
-					'order' => 'ASC',
-					'orderby' => 'comment_count',
-				);
-				query_posts($args);
-			}
+			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
-	?>
-	<form method="post" id="order">
-	  <select name="select" onchange='this.form.submit()'>
-	    <option value="newest"<?php selected( $_POST['select'],'newest', 1 ); ?>>Newest</option>
-	    <option value="oldest"<?php selected( $_POST['select'], 'oldest', 1 ); ?>>Oldest</option>
-	    <option value="mcommented"<?php selected( $_POST['select'],'mcommented', 1 ); ?>>Most commented</option>
-	    <option value="lcommented"<?php selected( $_POST['select'],'lcommented' , 1 ); ?>>least commented</option>
-	  </select>
-	</form>
-	<?php
+			query_posts(array(
+			    'post_type'      => 'post',
+			    'paged'          => $paged,
+			    'posts_per_page' => 5
+			));
+
 			if (have_posts()) : while (have_posts()) : the_post();
 		?>
 			<div class="row">
@@ -147,7 +103,6 @@ get_header();
 				<?php endwhile; ?>
 
 				<?php numbered_pagination(); ?>
-
 
 			<?php  else : ?>
 

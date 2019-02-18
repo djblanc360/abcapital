@@ -1,9 +1,13 @@
+body {
+  font-family: 'Montserrat', sans-serif; }
+
 h1, h2, h3, h4, h5 {
   text-transform: uppercase;
   font-weight: bold; }
 
 h2 {
-  font-size: 1.25rem; }
+  font-size: 1.25rem;
+  margin-bottom: 1rem; }
 
 h3 {
   font-size: 1rem; }
@@ -19,14 +23,32 @@ section {
       padding-top: 4rem;
       padding-bottom: 4rem; } }
 
+input[type="text"], input[type="email"], input[type="tel"], textarea {
+  width: 100%;
+  padding: 0.75rem 1.5rem; }
+
+input[type="submit"] {
+  width: 100%;
+  padding: 1rem 2rem;
+  color: #fff;
+  background-color: #162539;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: bold; }
+  input[type="submit"]:hover, input[type="submit"]:focus {
+    background-color: #243d5e;
+    cursor: pointer; }
+
 #pageHead {
   margin-top: 95px;
-  background: #444;
   background-position: center;
-  background-size: cover; }
+  background-size: cover;
+  position: relative; }
   #pageHead h1 {
-    color: #fff;
-    text-shadow: 0 0 45px #000; }
+    color: #fff; }
+  #pageHead .pageHeadContent {
+    z-index: 1;
+    position: relative; }
 
 .readMore {
   display: inline-block;
@@ -35,7 +57,7 @@ section {
   letter-spacing: 0.1rem;
   font-size: 0.75rem;
   padding: 0.8rem 1.75rem;
-  border: 1px solid #fff;
+  border: 2px solid #fff;
   font-weight: bold;
   transition: all .2s ease-in-out;
   -webkit-transition: all .2s ease-in-out;
@@ -48,10 +70,16 @@ section {
     text-decoration: none;
     background: #fff;
     color: #333; }
+  .readMore.readMoreBlue {
+    color: #162539;
+    border-color: #162539; }
+    .readMore.readMoreBlue:hover {
+      background-color: #162539;
+      color: #fff; }
 
 .spacer {
   width: 4rem;
-  background-color: #212032;
+  background-color: #162539;
   height: 1px;
   margin: 1.5rem auto; }
   .spacer.spacerWht {
@@ -77,6 +105,14 @@ section {
     .slick-dots li.slick-active button {
       background-color: #666; }
 
+.cover {
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0; }
+
 #coNums .coNumsNum {
   font-size: 2rem;
   font-weight: bold;
@@ -91,24 +127,136 @@ section {
   padding-bottom: 0; }
 
 #ctaBanner {
-  background: #444;
-  color: #fff; }
+  color: #fff;
+  position: relative; }
+  #ctaBanner p {
+    margin-bottom: 0; }
+  #ctaBanner .ctaBannerContent {
+    position: relative;
+    z-index: 1; }
+
+#blogFeedHoriz .blogFeedHorizSlider .blogFeedHorizItemContainer {
+  height: 600px;
+  background-size: cover;
+  background-position: center;
+  position: relative; }
+  #blogFeedHoriz .blogFeedHorizSlider .blogFeedHorizItemContainer .blogFeedHorizShadow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+1,000000+100 */
+    background: transparent;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, transparent 1%, rgba(0, 0, 0, 0.6) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, transparent 1%, rgba(0, 0, 0, 0.6) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, transparent 1%, rgba(0, 0, 0, 0.6) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='transparent', endColorstr='rgba(0,0,0,0.6)',GradientType=0 );
+    /* IE6-9 */
+    height: 40%; }
+  #blogFeedHoriz .blogFeedHorizSlider .blogFeedHorizItemContainer .blogFeedHorizText {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1rem;
+    color: #fff;
+    text-align: center;
+    z-index: 1;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out; }
+  #blogFeedHoriz .blogFeedHorizSlider .blogFeedHorizItemContainer .blogFeedHorizButtons {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -120px;
+    padding: 1rem;
+    color: #fff;
+    text-align: center;
+    z-index: 1;
+    transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out; }
+    #blogFeedHoriz .blogFeedHorizSlider .blogFeedHorizItemContainer .blogFeedHorizButtons p {
+      margin-bottom: 0; }
+      #blogFeedHoriz .blogFeedHorizSlider .blogFeedHorizItemContainer .blogFeedHorizButtons p a {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        padding: 0.7rem;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        transition: all .2s ease-in-out;
+        -webkit-transition: all .2s ease-in-out;
+        -moz-transition: all .2s ease-in-out;
+        -o-transition: all .2s ease-in-out; }
+        #blogFeedHoriz .blogFeedHorizSlider .blogFeedHorizItemContainer .blogFeedHorizButtons p a i {
+          color: #fff; }
+        #blogFeedHoriz .blogFeedHorizSlider .blogFeedHorizItemContainer .blogFeedHorizButtons p a:hover {
+          background-color: #fff; }
+          #blogFeedHoriz .blogFeedHorizSlider .blogFeedHorizItemContainer .blogFeedHorizButtons p a:hover i {
+            color: #162539; }
+  #blogFeedHoriz .blogFeedHorizSlider .blogFeedHorizItemContainer:hover {
+    cursor: pointer; }
+    #blogFeedHoriz .blogFeedHorizSlider .blogFeedHorizItemContainer:hover .blogFeedHorizText {
+      bottom: 50px; }
+    #blogFeedHoriz .blogFeedHorizSlider .blogFeedHorizItemContainer:hover .blogFeedHorizButtons {
+      bottom: 0; }
+#blogFeedHoriz .blogFeedHorizSlider .slick-arrow {
+  position: absolute;
+  top: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  z-index: 1; }
+  #blogFeedHoriz .blogFeedHorizSlider .slick-arrow:hover {
+    background: #000;
+    cursor: pointer; }
+  #blogFeedHoriz .blogFeedHorizSlider .slick-arrow.slick-prev {
+    left: 0; }
+  #blogFeedHoriz .blogFeedHorizSlider .slick-arrow.slick-next {
+    right: 0; }
 
 #officeMap {
   padding-top: 0;
   padding-bottom: 0; }
 
+.social-list {
+  margin-bottom: 0;
+  margin-left: 0; }
+  .social-list li {
+    display: inline-block; }
+    .social-list li a {
+      padding: 0.25rem;
+      color: #fff; }
+
+.navbar .nav-item .nav-link {
+  transition: all .2s ease-in-out;
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out; }
+  @media screen and (min-width: 768px) {
+    .navbar .nav-item .nav-link {
+      padding: 2rem 1.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #333;
+      font-size: 0.8rem; } }
 @media screen and (min-width: 768px) {
-  .navbar .nav-item .nav-link {
-    padding: 2rem 1.5rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #333; } }
+  .navbar.sticky .nav-item .nav-link {
+    padding: 0.75rem 1.5rem; } }
 
 #colophon {
-  background-color: #212032;
+  background-color: #162539;
   color: #fff;
   padding-top: 2rem; }
+  #colophon .footLogo {
+    margin-bottom: 1rem; }
   #colophon #footDisc {
     margin-top: 2rem;
     background: #000;
@@ -124,8 +272,31 @@ section {
         text-decoration: none; }
 
 .home #introSlider {
-  padding-top: 0;
-  padding-bottom: 0; }
+  padding-top: 55px;
+  padding-bottom: 0;
+  min-height: 80vh;
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative; }
+  @media screen and (min-width: 768px) {
+    .home #introSlider {
+      padding-top: 100px; } }
+  .home #introSlider .introSliderText {
+    z-index: 1; }
+    .home #introSlider .introSliderText h1 {
+      font-weight: bold; }
+      @media screen and (min-width: 768px) {
+        .home #introSlider .introSliderText h1 {
+          font-size: 4rem; } }
+    .home #introSlider .introSliderText .readMore {
+      margin-top: 1rem;
+      margin-bottom: 1rem; }
+      @media screen and (max-width: 768px) {
+        .home #introSlider .introSliderText .readMore {
+          margin-top: 0.25rem;
+          margin-bottom: 0.25rem; } }
   .home #introSlider .slick-arrow {
     position: absolute;
     top: 50%;
@@ -144,14 +315,58 @@ section {
     bottom: 40px;
     z-index: 1; }
 .home #threeFeature {
-  background-color: #212032;
+  background-color: #162539;
   color: #fff; }
   .home #threeFeature h2 {
-    font-weight: normal;
     font-size: 1rem; }
+  .home #threeFeature .threeFeatureIconContainer {
+    width: 75px;
+    height: 75px;
+    margin: auto;
+    margin-bottom: 1.25rem;
+    border-radius: 50%;
+    background-color: #080d14;
+    color: #fff;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out; }
+    .home #threeFeature .threeFeatureIconContainer:hover {
+      background-color: #fff;
+      color: #162539; }
+    .home #threeFeature .threeFeatureIconContainer i {
+      font-size: 1.5rem; }
 .home #recentDeals {
   padding-top: 0;
   padding-bottom: 0; }
+  .home #recentDeals .recentDealsContainer {
+    background: #f2f2f2;
+    transform: scale(1);
+    box-shadow: none;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    position: relative;
+    z-index: 1;
+    border: 1px solid #fff; }
+    .home #recentDeals .recentDealsContainer .recentDealsImgContainer {
+      width: 100%;
+      height: 300px;
+      background-size: cover;
+      background-position: center; }
+    .home #recentDeals .recentDealsContainer.active, .home #recentDeals .recentDealsContainer:hover {
+      background: #fff;
+      transform: scale(1.025);
+      box-shadow: 0 0 25px -5px #000;
+      z-index: 2; }
+  .home #recentDeals .recentDealsText {
+    text-align: center;
+    padding: 1rem;
+    min-height: 230px; }
+    .home #recentDeals .recentDealsText h3 {
+      margin-top: 1rem;
+      margin-bottom: 1rem; }
 
 .page-template-page-about .imgOffsetContainer {
   background: #f2f2f2;
@@ -167,11 +382,14 @@ section {
       left: initial;
       right: 1rem; }
 .page-template-page-about #coNums {
-  background-color: #212032;
+  background-color: #162539;
   color: #fff; }
 .page-template-page-about #aboutProcess {
-  background-color: #212032;
+  background-color: #162539;
   color: #fff; }
+  .page-template-page-about #aboutProcess i {
+    margin: 1.5rem;
+    font-size: 2rem; }
 .page-template-page-about .memSlider .slick-arrow {
   position: absolute;
   top: 50%;
@@ -187,11 +405,11 @@ section {
   .page-template-page-about .memSlider .slick-arrow.slick-next {
     right: -3rem; }
 .page-template-page-about .memSlider .memContainer {
-  background-color: #212032;
+  background-color: #162539;
   margin-left: 15px;
   margin-right: 15px; }
   .page-template-page-about .memSlider .memContainer .memImgContainer {
-    height: 220px;
+    height: 340px;
     width: 100%;
     background-size: cover;
     background-position: center; }
@@ -203,5 +421,170 @@ section {
       font-size: 0.75rem;
       text-transform: none;
       margin-bottom: 1rem; }
+    .page-template-page-about .memSlider .memContainer .memTxtContainer .memDesc {
+      font-size: 0.75rem; }
+
+.page-template-page-invest #investIntro h2 {
+  margin-top: 2rem; }
+.page-template-page-invest #investStrat {
+  background-color: #162539;
+  background-size: cover;
+  background-position: center;
+  color: #fff; }
+.page-template-page-invest #investTypes {
+  padding-bottom: 0; }
+  .page-template-page-invest #investTypes .investTypesTabs p {
+    margin-bottom: 1px; }
+  .page-template-page-invest #investTypes .investTypesTabs .investTypeTab {
+    background: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    padding: 1rem;
+    color: #333;
+    opacity: 0.3;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    display: inline-block; }
+    .page-template-page-invest #investTypes .investTypesTabs .investTypeTab:visited, .page-template-page-invest #investTypes .investTypesTabs .investTypeTab:focus {
+      background: #fff;
+      text-decoration: none;
+      color: #333;
+      outline: 0; }
+    .page-template-page-invest #investTypes .investTypesTabs .investTypeTab:hover {
+      background: #fff;
+      color: #162539;
+      opacity: 1;
+      border-bottom: 2px solid #162539;
+      text-decoration: none;
+      cursor: pointer; }
+    .page-template-page-invest #investTypes .investTypesTabs .investTypeTab.slick-current {
+      color: #162539;
+      opacity: 1;
+      border-bottom: 2px solid #162539; }
+  .page-template-page-invest #investTypes .investTypesContent {
+    background: #162539;
+    color: #fff; }
+.page-template-page-invest #investorQs .investorQsContainer {
+  width: 600px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto; }
+
+.page-template-page-closed-investments #closedDealList {
+  padding-top: 0; }
+  .page-template-page-closed-investments #closedDealList .closedDealContainer {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+    position: relative;
+    margin-bottom: 30px; }
+    .page-template-page-closed-investments #closedDealList .closedDealContainer .closedDealTextContainer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+1,000000+100 */
+      background: transparent;
+      /* Old browsers */
+      background: -moz-linear-gradient(top, transparent 1%, rgba(0, 0, 0, 0.8) 100%);
+      /* FF3.6-15 */
+      background: -webkit-linear-gradient(top, transparent 1%, rgba(0, 0, 0, 0.8) 100%);
+      /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom, transparent 1%, rgba(0, 0, 0, 0.8) 100%);
+      /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='transparent', endColorstr='rgba(0,0,0,0.8)',GradientType=0 );
+      /* IE6-9 */
+      padding: 2rem;
+      padding-top: 8rem;
+      transition: all .3s ease-in-out;
+      -webkit-transition: all .3s ease-in-out;
+      -moz-transition: all .3s ease-in-out;
+      -o-transition: all .3s ease-in-out; }
+      @media screen and (max-width: 768px) {
+        .page-template-page-closed-investments #closedDealList .closedDealContainer .closedDealTextContainer {
+          opacity: 1; } }
+      .page-template-page-closed-investments #closedDealList .closedDealContainer .closedDealTextContainer .closedDealText {
+        position: relative;
+        color: #fff;
+        bottom: 0;
+        transition: all .3s ease-in-out;
+        -webkit-transition: all .3s ease-in-out;
+        -moz-transition: all .3s ease-in-out;
+        -o-transition: all .3s ease-in-out; }
+        @media screen and (max-width: 768px) {
+          .page-template-page-closed-investments #closedDealList .closedDealContainer .closedDealTextContainer .closedDealText {
+            bottom: 0; }
+            .page-template-page-closed-investments #closedDealList .closedDealContainer .closedDealTextContainer .closedDealText .readMore {
+              margin-top: 1rem; } }
+        .page-template-page-closed-investments #closedDealList .closedDealContainer .closedDealTextContainer .closedDealText p {
+          margin-bottom: 0; }
+    .page-template-page-closed-investments #closedDealList .closedDealContainer:hover {
+      cursor: pointer; }
+      .page-template-page-closed-investments #closedDealList .closedDealContainer:hover .closedDealTextContainer {
+        opacity: 1; }
+        .page-template-page-closed-investments #closedDealList .closedDealContainer:hover .closedDealTextContainer .closedDealText {
+          bottom: 0; }
+
+.single-investment {
+  padding-top: 3rem; }
+  @media screen and (min-width: 768px) {
+    .single-investment {
+      padding-top: 5rem; } }
+  @media screen and (min-width: 768px) {
+    .single-investment #closedInvestmentContent .entry-content .investContent {
+      position: relative;
+      right: -4rem; } }
+  .single-investment #closedInvestmentContent .entry-content .investStatsCont {
+    padding: 0.5rem 1rem;
+    background-color: #f2f2f2;
+    margin-bottom: 1rem; }
+    @media screen and (min-width: 768px) {
+      .single-investment #closedInvestmentContent .entry-content .investStatsCont {
+        position: relative;
+        top: -5rem;
+        right: -4rem;
+        padding: 1rem 2rem; } }
+    .single-investment #closedInvestmentContent .entry-content .investStatsCont .investStatsInner {
+      color: #333; }
+      .single-investment #closedInvestmentContent .entry-content .investStatsCont .investStatsInner .investStatRow {
+        border-bottom: 1px dotted #c0c0c0;
+        padding-top: 1rem;
+        padding-bottom: 1rem; }
+        .single-investment #closedInvestmentContent .entry-content .investStatsCont .investStatsInner .investStatRow:last-child {
+          border-bottom: 0; }
+        .single-investment #closedInvestmentContent .entry-content .investStatsCont .investStatsInner .investStatRow p {
+          margin: 0;
+          font-size: 0.75rem; }
+
+.page-template-page-faq .faqAccordion .accordion .card {
+  border: 0;
+  background-color: transparent;
+  margin-bottom: 1rem; }
+  .page-template-page-faq .faqAccordion .accordion .card .card-header {
+    padding: 0;
+    border-radius: 0;
+    border: 0;
+    background-color: transparent; }
+    .page-template-page-faq .faqAccordion .accordion .card .card-header h2 button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background-color: #162539;
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      padding: 1rem 2rem; }
+      .page-template-page-faq .faqAccordion .accordion .card .card-header h2 button.collapsed {
+        color: #333;
+        background-color: #f2f2f2; }
+
+.page-template-page-contact .social-list li a {
+  color: #000; }
 
 /*# sourceMappingURL=bryan.css.map */

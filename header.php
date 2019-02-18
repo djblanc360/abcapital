@@ -28,7 +28,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 			<div class="container">
 			  <a class="navbar-brand" href="<?php echo site_url(); ?>">
-			    <img src="logo.png" width="30" height="30" alt="AB Capital Logo">
+			    <img src="<?php echo site_url(); ?>/wp-content/themes/ab-capital/img/ab-logo.png" width="200" height="34" alt="AB Capital Logo">
 			  </a>
 			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			    <span class="navbar-toggler-icon"></span>
@@ -56,12 +56,15 @@
 
 		<?php if( is_front_page() ) { ?>
 
+		<?php } elseif ( is_singular('investment') ) { ?>
+
 		<?php } else { ?>
 
-			<section id="pageHead" style="background-image: url(<?php the_post_thumbnail_url(); ?>);">
-				<div class="container">
+			<section id="pageHead" class="parallax-window" data-parallax="scroll" data-image-src="<?php echo site_url(); ?>/wp-content/themes/ab-capital/img/intro-bg-2560.jpg">
+				<div class="container pageHeadContent">
 					<h1><?php the_title(); ?></h1>
 				</div>
+				<div class="cover"></div>
 			</section>
 
 		<?php } ?>
